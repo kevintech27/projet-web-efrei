@@ -13,7 +13,7 @@
         <li><a href="cours.php">Cours et Formations</a></li>
         <li><a href="equipe.php">Équipe d'enseignement</a></li>
         <li><a href="evenement.php">Evenements et Vie étudiante</a></li>
-        <li><a href="apropos.html">À propos</a></li>
+        <li><a href="contact.php">À propos</a></li>
       </ul>
     </nav>
   </header>
