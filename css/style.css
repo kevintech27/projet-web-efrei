@@ -18,37 +18,60 @@ html{
     overflow: hidden;
 }
 
-body{
-    background: rgb(0, 0, 0);
-    color: white;
-    display: flex;
-    flex-direction: column;
-    font-family: "Roboto", sans-serif;
+body {
+  margin: 0;
+  min-height: 100vh;
+  background-image: url("../image/campus-8421-Copie.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  font-family: Arial, sans-serif;
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.35);
+  z-index: -1;
 }
 
 .navbar {
   display: flex;
   align-items: center;
-  justify-content: space-between; 
+  justify-content: space-between;
+  padding: 20px 50px;
+  background: rgba(0, 0, 0, 0.25);
+  backdrop-filter: blur(6px);
 }
 
 .menu {
   display: flex;
-  gap: 20px;
+  gap: 40px;
   list-style: none;
+  margin: 0;
+  padding: 0;
 }
 
 .logo-img {
-  width: 120px; 
+  width: 170px;
+  height: auto;
 }
 
-.btn1{
-    color: white;
-    padding: 10px 40px;
-    border-radius: 18px;
-    border: none;
-    background:linear-gradient(45deg,blue,pink,orange);
+.menu a {
+  color: white;
+  text-decoration: none;
+  font-size: 22px;
+  font-weight: 600;
+  text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.8);
+  transition: 0.3s;
 }
+
+.menu a:hover {
+  color: #4da6ff;
+  transform: scale(1.05);
+}
+
 
 .mainarea{
     display: flex;
@@ -57,11 +80,53 @@ body{
     flex-direction: column;
 }
 
-.text1{
-    margin-top: 30px;
-    font-size: 3rem;
-    background:linear-gradient(45deg,blue,pink,orange);
-    -webkit-background-clip:text;
-    -webkit-text-fill-color: transparent;
+.menu li {
+  font-size: 25px; 
+  color: whitesmoke
 }
 
+/* Dropdown structure */
+.dropdown {
+  position: relative;
+}
+
+/* Sous-menu caché */
+.submenu {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background: rgba(0, 0, 0, 0.4); /* transparent */
+  backdrop-filter: blur(10px);   /* effet Apple */
+  border-radius: 12px;
+  padding: 10px 0;
+  list-style: none;
+  min-width: 180px;
+
+  opacity: 0;
+  transform: translateY(10px);
+  transition: 0.3s;
+}
+
+/* Affichage au hover */
+.dropdown:hover .submenu {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Liens du sous-menu */
+.submenu li {
+  padding: 10px 20px;
+}
+
+.submenu a {
+  color: white;
+  text-decoration: none;
+  display: block;
+  transition: 0.2s;
+}
+
+/* Hover effet */
+.submenu a:hover {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+}
