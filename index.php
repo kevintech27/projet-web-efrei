@@ -81,3 +81,12 @@
 
     </main>
     
+     <footer>
+        <nav>
+            <a href="contact.php">À propos</a>
+        </nav>
+        <p>&copy; 2026 - Département Informatique - EFREI Paris</p>
+    </footer>
+
+</body>
+</html>
