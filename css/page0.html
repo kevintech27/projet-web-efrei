@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Département informatique EFREI - Acceuil</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+   <script type="module" src="https://unpkg.com/@splinetool/viewer@1.12.58/build/spline-viewer.js"></script>
+</head>
+<body>
+    <spline-viewer class="background" 
+    url="https://prod.spline.design/bBkUEMOHUEx2Tev5/scene.splinecode"></spline-viewer>
+    <nav class="navbar">
+        <h1 class="logo">Efrei</h1>
+        <ul class="menu">
+            <li>Cours & Formation</li>
+            <li>Équipe enseignante</li>
+            <li>À propos / Contact</li>
+            <li>Évènement</li>
+        </ul>
+    </nav>
+    <script>
+  const spline = document.querySelector('spline-viewer');
+
+  spline.addEventListener('click', () => {
+    window.location.href = 'accueil.html';
+  });
+</script>
+</body>
+</html>
