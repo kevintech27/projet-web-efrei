@@ -27,20 +27,21 @@
 
     <section>
       <h2>Clubs et associations</h2>
-      <p>De nombreuses associations étudiantes sont liées à l’informatique :</p>
+      <p>De nombreuses associations étudiantes sont liés à différents domaines dans l'école :</p>
     <ul>
     <li>
-      <img src="images/asso1.png" alt="Logo association" width="50">
-      Associations
+    
+      <img src="https://www.efrei.fr/wp-content/uploads/2025/08/One-Pantheon.png" alt="Logo association One Panthéon" width="50">
+      Associations projets développement informatique : One Panthéon
     </li>
 
     <li>
-      <img src="images/ice.png" alt="Logo ICE" width="50">
+      <img src="https://www.efrei.fr/wp-content/uploads/2025/09/Ice-2-300x250.jpg" alt="Logo ICE" width="50">
       Associations d'innovations et conception : ICE
     </li>
 
     <li>
-      <img src="images/4esport.png" alt="Logo 4eSport" width="50">
+      <img src="https://www.efrei.fr/wp-content/uploads/2025/08/4eSport.png" alt="Logo 4eSport" width="50">
       Associations d’e-sport : 4eSport
     </li>
 
