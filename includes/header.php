@@ -8,9 +8,7 @@
     <!-- Lien vers ton CSS -->
     <link rel="stylesheet" href="css/style.css">
 </head>
-
-<body>
-
+<header>
 <nav class="navbar">
     <img src="image/Logo_Efrei_2022.svg.png" class="logo-img" alt="Logo Efrei">
 
@@ -22,3 +20,4 @@
         <li><a href="evenement.php">Évènement</a></li>
     </ul>
 </nav>
+</header>

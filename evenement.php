@@ -2,7 +2,8 @@
 $page = "evenement";
 ?>
 <?php include 'includes/header.php'; ?>
-
+<body>
+  <h1 class="titre-evenement"> Évènements & Vie étudiante </h1>
   <main class="container">
     <section class="installations">
       <h2>Campus et infrastructures informatique</h2>
@@ -106,5 +107,5 @@ $page = "evenement";
       </ul>
     </section>
   </main>
-
+</body>
   <?php include 'includes/footer.php'; ?>
