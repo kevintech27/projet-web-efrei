@@ -22,7 +22,7 @@
 
   <main>
     <section class="installations">
-      <h2>Installations et moyens</h2>
+      <h2>Campus et infrastructures informatique</h2>
       <p>Le campus de Villejuif offre des laboratoires informatiques modernes, des espaces de coworking, des salles de projet et des ressources numériques accessibles aux étudiants.</p>
       <p>Les étudiants ont également accès à des plateformes pédagogiques comme Moodle et des ressources et archives sur l'espace Myefrei .</p>
     
@@ -107,7 +107,16 @@
             <img src="https://tse4.mm.bing.net/th/id/OIP.FF0l01EJyeCrk8a-_mZkfQHaFj?pid=Api&P=0&h=180"
                  alt="Défi Cyber" width="50">
             <figcaption>
-              Challenge Cybersécurité : Hackathon intensif où les étudiants travaillent en équipe pendant 24 à 48h pour résoudre un problème réel.
+              Challenge Cybersécurité : Hackathon intensif où les étudiants travaillent en équipe pendant 24 à 48h pour résoudre un problème informatique.
+            </figcaption>
+          </figure>
+        </li>
+        <li>
+          <figure>
+            <img src="https://www.efrei.fr/wp-content/uploads/2025/09/Tech-Day-2-scaled-1.jpg"
+                 alt="Tech Day 2024" width="50">
+            <figcaption>
+              Tech Day 2024 : 7 projets ingénieurs pour révolutionner le monde, transformer la créativité en innovation technologique
             </figcaption>
           </figure>
         </li>
