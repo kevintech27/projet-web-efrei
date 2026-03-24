@@ -55,22 +55,54 @@ document.addEventListener('DOMContentLoaded', () => {
         observer.observe(el);
     });
 
+// ========================================================
+    // 3. LOGIQUE DU CARROUSEL (Boucle infinie & Auto-play)
     // ========================================================
-    // 3. LOGIQUE DU CARROUSEL (Flèches)
-    // ========================================================
-    const sliderTrack = document.querySelector('.testimonial-slider-track');
-    const prevBtn = document.querySelector('.prev-arrow');
-    const nextBtn = document.querySelector('.next-arrow');
+    const sliders = document.querySelectorAll('.testimonial-slider-container');
+    
+    sliders.forEach(slider => {
+        const track = slider.querySelector('.testimonial-slider-track');
+        const prevBtn = slider.querySelector('.prev-arrow');
+        const nextBtn = slider.querySelector('.next-arrow');
+        const card = slider.querySelector('.testimonial-card');
 
-    if (sliderTrack && prevBtn && nextBtn) {
-        const card = document.querySelector('.testimonial-card');
-        if (card) {
-            nextBtn.addEventListener('click', () => {
-                sliderTrack.scrollBy({ left: card.offsetWidth + 30, behavior: 'smooth' });
-            });
-            prevBtn.addEventListener('click', () => {
-                sliderTrack.scrollBy({ left: -(card.offsetWidth + 30), behavior: 'smooth' });
+        if (track && prevBtn && nextBtn && card) {
+            const scrollAmount = card.offsetWidth + 30; // Largeur d'une carte + l'espace (gap)
+
+            // Fonction pour passer à la carte suivante avec boucle infinie
+            const slideNext = () => {
+                // Si on a atteint la toute fin du défilement
+                if (track.scrollLeft + track.clientWidth >= track.scrollWidth - 10) {
+                    track.scrollTo({ left: 0, behavior: 'smooth' }); // Retour doux au début
+                } else {
+                    track.scrollBy({ left: scrollAmount, behavior: 'smooth' });
+                }
+            };
+
+            // Fonction pour revenir en arrière avec boucle infinie
+            const slidePrev = () => {
+                // Si on est tout au début
+                if (track.scrollLeft <= 10) {
+                    track.scrollTo({ left: track.scrollWidth, behavior: 'smooth' }); // Aller à la fin
+                } else {
+                    track.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
+                }
+            };
+
+            // Écouteurs d'événements sur les flèches
+            nextBtn.addEventListener('click', slideNext);
+            prevBtn.addEventListener('click', slidePrev);
+
+            // BONUS PRO : Défilement automatique (Auto-play)
+            let autoPlay = setInterval(slideNext, 4000); // Défile toutes les 4 secondes
+
+            // Met en pause quand l'utilisateur met sa souris dessus pour lire
+            slider.addEventListener('mouseenter', () => clearInterval(autoPlay));
+            
+            // Relance le défilement quand la souris quitte le carrousel
+            slider.addEventListener('mouseleave', () => {
+                autoPlay = setInterval(slideNext, 4000);
             });
         }
-    }
+    });
 });
