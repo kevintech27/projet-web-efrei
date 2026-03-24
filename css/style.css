@@ -284,81 +284,6 @@ body::before {
     }
 }
 
-/* ========================================= */
-/* 6. EVENEMENTS                             */
-/* ========================================= */
-
-.evenement-container {
-    max-width: 1000px;
-    margin: 0 auto;
-    padding: 40px 20px;
-    color: white;
-}
-
-.event-section {
-    background: rgba(0, 0, 0, 0.35);
-    padding: 20px;
-    border-radius: 12px;
-    margin-bottom: 35px;
-}
-
-/* Titres */
-.event-section h2 {
-    font-size: 28px;
-    margin-bottom: 15px;
-    text-shadow: 2px 2px 6px rgba(0,0,0,0.6);
-}
-
-/* Paragraphes */
-.event-section p {
-    font-size: 17px;
-    line-height: 1.6;
-    margin-bottom: 12px;
-}
-
-
-.event-list {
-    list-style: none;
-    padding-left: 0;
-}
-
-.event-list li {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    background: rgba(255, 255, 255, 0.08);
-    padding: 10px;
-    border-radius: 10px;
-    margin-bottom: 15px;
-}
-
-/* Images */
-.event-list img {
-    width: 90px;
-    border-radius: 8px;
-}
-
-/* Texte sous image */
-.event-list figcaption {
-    font-size: 16px;
-    line-height: 1.4;
-}
-
-@media (max-width: 700px) {
-
-    .event-list li {
-        flex-direction: column;
-        text-align: center;
-    }
-
-    .event-list img {
-        width: 70px;
-    }
-
-    .event-section h2 {
-        font-size: 24px;
-    }
-}
 
 /* Je pense que le début du CSS en dessous c'est pour la page cours et formations, dites moi si c'est ça ou pas */
 
@@ -522,22 +447,86 @@ body::before {
 
 
 /* ========================================================================== */
-/* ========================================================================== */
 /* ZONE 4 : ALEXANDRE (ÉVÈNEMENTS)                         */
 /* ========================================================================== */
-/* ========================================================================== */
-
 /* Alexandre : Mets tout le CSS de la page evenement.php ici en dessous ! */
-/* Mon CSS est de la ligne 291 à 361*/
-/* A chaque fois que je le mettais ici quelqu'un modifiait ici 
-ducoup mon CSS s'enlevait se remettait la ou il était avant*/
-/* Il y avait quelques conflits dans le fichier*/
+/* Mon CSS est de la ligne 291 à 361 mais A chaque fois que je le mettais ici quelqu'un modifiait ici 
+ducoup mon CSS s'enlevait se remettait la ou il était avant Il y avait quelques conflits dans le fichier*/
+
+.evenement-container {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 40px 20px;
+    color: white;
+}
+
+.event-section {
+    background: rgba(0, 0, 0, 0.35);
+    padding: 20px;
+    border-radius: 12px;
+    margin-bottom: 35px;
+}
+
+/* Titres */
+.event-section h2 {
+    font-size: 28px;
+    margin-bottom: 15px;
+    text-shadow: 2px 2px 6px rgba(0,0,0,0.6);
+}
+
+/* Paragraphes */
+.event-section p {
+    font-size: 17px;
+    line-height: 1.6;
+    margin-bottom: 12px;
+}
 
 
-/* ========================================================================== */
+.event-list {
+    list-style: none;
+    padding-left: 0;
+}
+
+.event-list li {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    background: rgba(255, 255, 255, 0.08);
+    padding: 10px;
+    border-radius: 10px;
+    margin-bottom: 15px;
+}
+
+/* Images */
+.event-list img {
+    width: 90px;
+    border-radius: 8px;
+}
+
+/* Texte sous image */
+.event-list figcaption {
+    font-size: 16px;
+    line-height: 1.4;
+}
+
+@media (max-width: 700px) {
+
+    .event-list li {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .event-list img {
+        width: 70px;
+    }
+
+    .event-section h2 {
+        font-size: 24px;
+    }
+}
+
 /* ========================================================================== */
 /* RESPONSIVE GLOBAL (MOBILES)                             */
-/* ========================================================================== */
 /* ========================================================================== */
 
 @media screen and (max-width: 900px) {
