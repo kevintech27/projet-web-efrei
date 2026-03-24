@@ -52,25 +52,20 @@
       <p>Il existe plus de 65 associations et clubs</p>
     <ul>
     <li>
-      <img src="https://www.efrei.fr/wp-content/uploads/2025/08/One-Pantheon.png" alt="Logo association One Panthéon" width="50">
+      <img src="https://tse2.mm.bing.net/th/id/OIP.MQxYBjL_pVT02ABHaJYLEwAAAA?pid=Api&P=0&h=180" alt="Logo association One Panthéon" width="50">
       Associations projets développement informatique : One Panthéon
     </li>
 
     <li>
-      <img src="https://www.efrei.fr/wp-content/uploads/2025/09/Ice-2-300x250.jpg" alt="Logo ICE" width="50">
+      <img src="https://tse2.mm.bing.net/th/id/OIP.uvpVTGubyeYDHBrpnbjI_AHaHa?pid=Api&P=0&h=180" alt="Logo ICE" width="50">
       Associations d'innovations et conception : ICE
     </li>
 
     <li>
-      <img src="https://www.efrei.fr/wp-content/uploads/2025/08/4eSport.png" alt="Logo 4eSport" width="50">
+      <img src="https://tse3.mm.bing.net/th/id/OIP.TbUkUFsAqnxtPwvdzZDcaQHaHa?pid=Api&P=0&h=180" alt="Logo 4eSport" width="50">
       Associations d’e-sport : 4eSport
     </li>
-
-    <li>
-      <img src="images/cyber.png" alt="Logo cybersécurité" width="50">
-      Clubs de cybersécurité (hackathons, challenges, etc.)
-    </li>
-  </ul>
+    </ul>
     </section>
 
     <section>
@@ -81,8 +76,14 @@
 
     <section>
       <h2>Projets étudiants</h2>
-      <p>Une galerie dédiée présente les meilleurs projets réalisés dans le cadre des cours, des projets de groupe ou des associations.</p>
-
+      <p>Voici quelques projets, innovations et challenges venant d'étudiants et associations.</p>
+    <ul>
+    <li>
+      <img src="https://tse4.mm.bing.net/th/id/OIP.FF0l01EJyeCrk8a-_mZkfQHaFj?pid=Api&P=0&h=180" alt="Défi Cyber" width="50">
+      Challenge en Cybersécurité : Hackathon événement intensif où les étudiants travaillent en équipe pendant 24 à 48 heures pour résoudre un problème réel proposé par une entreprise ou organisation
+    </li>
+    </ul>
+  
     </section>
   </main>
 
