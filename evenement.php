@@ -96,7 +96,7 @@ $page = "evenement";
         </li>
         <li>
           <figure>
-            <img src="https://www.efrei.fr/wp-content/uploads/2025/09/Tech-Day-2-scaled-1.jpg"
+            <img src="https://tse4.mm.bing.net/th/id/OIP.IgH5IAI9e788tuw5MQebjgHaE7?pid=Api&P=0&h=180"
                  alt="Tech Day 2024" width="50">
             <figcaption>
               Tech Day 2024 : 7 projets ingénieurs pour révolutionner le monde, transformer la créativité en innovation technologique
