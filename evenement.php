@@ -1,7 +1,7 @@
 <?php
 $page = "evenement";
 ?>
-<?php include("header.php"); ?> 
+<?php include 'includes/header.php'; ?> 
 
   <main class="container">
     <section class="installations">
@@ -107,4 +107,4 @@ $page = "evenement";
     </section>
   </main>
 
-  <?php include("footer.php"); ?>
+  <?php include 'includes/footer.php'; ?>
