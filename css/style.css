@@ -358,6 +358,9 @@ body::before {
     .event-section h2 {
         font-size: 24px;
     }
+}
+
+
 .formation-block.open .formation-header::after { 
     content: "–"; 
     transform: translateY(-50%) rotate(180deg); 
