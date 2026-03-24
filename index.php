@@ -1,92 +1,78 @@
-<!DOCTYPE html>
-<html lang="fr">
-<head>
-    <meta charset="UTF-8">
-    <title>Département Informatique - EFREI Paris</title>
-</head>
+<?php
+// On active les erreurs au cas où
+ini_set('display_errors', 1);
+error_reporting(E_ALL);
 
-<body>
+$pageTitle = "Accueil - Département Informatique EFREI";
+require_once('includes/header.php'); 
+?>
 
-    <header>
-        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRP_nJaWZpSKxzQ9oQWMMFpz-niIxdgt5xeww&s" alt="Logo EFREI Paris" width="120">
-        <h1>Former les ingénieurs et experts dans le futur du numérique</h1>
+<main>
+    <section id="hero-3d" style="position: fixed; top: 0; left: 0; height: 100vh; width: 100%; z-index: -1; background-color: #000;">
+        <spline-viewer class="background" url="https://prod.spline.design/bBkUEMOHUEx2Tev5/scene.splinecode" style="width: 100%; height: 100%;"></spline-viewer>
+    </section>
 
-        <nav>
-            <ul>
-                <li><a href="index.php">Accueil</a></li>
-                <li><a href="cours.php">Cours et Formations</a></li>
-                <li><a href="equipe.php">Équipe d'enseignement</a></li>
-                <li><a href="partenariats-entreprises.html">Partenariats et entreprises</a></li>
-                <li><a href="vie-etudiante.html">Vie étudiante</a></li>
-                <li><a href="contact.php">À propos</a></li>
-            </ul>
-        </nav>
-    </header>
-    
-    <main>
+    <div style="height: 100vh; pointer-events: none; display: flex; align-items: flex-end; justify-content: center; padding-bottom: 50px;">
+         <h2 style="color: white; text-shadow: 2px 2px 10px rgba(0,0,0,0.8); font-size: 1.5rem;">
+            Découvrez le département Informatique 👇
+        </h2>
+    </div>
 
-        <section>
-            <h2>Campus & Vie Étudiante</h2>
-            <div class="carrousel">
-                <figure>
-                    <img src="https://grandes-ecoles.studyrama.com/sites/default/files/styles/hero_big/public/efrei-campus-paris.jpg.webp?itok=8iR7Ub0t" alt="Campus EFREI Villejuif">
-                    <figcaption>Campus de Villejuif</figcaption>
-                </figure>
+    <section id="contenu-accueil" class="container" style="background-color: white; padding: 80px 20px; text-align: center; border-radius: 20px 20px 0 0; box-shadow: 0 -10px 30px rgba(0,0,0,0.2); position: relative; z-index: 1;">
+        
+        <h1 style="color: #004d99; font-size: 2.5rem; margin-bottom: 20px;">
+            Façonner les ingénieurs et experts du numérique de demain
+        </h1>
+        <p style="font-size: 1.2rem; line-height: 1.6; color: #444; margin-bottom: 50px; max-width: 800px; margin-left: auto; margin-right: auto;">
+            Bienvenue sur le site du département Informatique de l'EFREI. Découvrez nos formations, du Bachelor au Cycle Ingénieur, sur notre campus de Villejuif.
+        </p>
 
-                <figure>
-                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQzsljoEorkOQS3xJbRBh7PiTc3I0WypxeTiw&s" alt="Étudiants en projets">
-                    <figcaption>Étudiants en projets</figcaption>
-                </figure>
-
-                <figure>
-                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRWoAgFahLb08byilxMcafTBScsUWz5sazwBA&s" alt="Événements à l'EFREI">
-                    <figcaption>Événements à l'EFREI</figcaption>
-                </figure>
+        <div class="chiffres-cles" style="display: flex; justify-content: center; flex-wrap: wrap; gap: 30px; margin-bottom: 50px;">
+            <div style="background: #f8f9fa; padding: 30px; border-radius: 12px; min-width: 200px; box-shadow: 0 4px 6px rgba(0,0,0,0.05);">
+                <h3 style="color: #004d99; font-size: 2.5rem; margin: 0;">95%</h3>
+                <p style="margin-top: 10px; font-weight: 600;">Satisfaction étudiante</p>
             </div>
-            <p>Photos modernes du campus, des étudiants en actions et des événements majeurs.</p>
-        </section>
+            <div style="background: #f8f9fa; padding: 30px; border-radius: 12px; min-width: 200px; box-shadow: 0 4px 6px rgba(0,0,0,0.05);">
+                <h3 style="color: #004d99; font-size: 2.5rem; margin: 0;">2000+</h3>
+                <p style="margin-top: 10px; font-weight: 600;">Entreprises partenaires</p>
+            </div>
+        </div>
 
-        <section>
-            <h2>Chiffres clés du département</h2>
-            <ul>
-                <li>95% de satisfaction étudiante</li>
-                <li>50 enseignants chercheurs</li>
-                <li>6000 étudiants</li>
-                <li>Plus de 10 000 diplômés dans le secteur du numérique</li>
-                <li>2000 entreprises partenaires</li>
-                <li>16 000 alumni</li>
-                <li>93 Universités partenaires</li>
-                <li>Classements nationaux et internationaux reconnus</li>
-            </ul>
-        </section>
+        <div class="acces-rapides" style="display: flex; justify-content: center; gap: 20px; flex-wrap: wrap;">
+            <a href="cours.php" style="padding: 15px 30px; background: #004d99; color: white; text-decoration: none; border-radius: 8px; font-weight: bold;">Nos Formations</a>
+            <a href="contact.php" style="padding: 15px 30px; background: white; color: #004d99; text-decoration: none; border: 2px solid #004d99; border-radius: 8px; font-weight: bold;">Admissions & Contact</a>
+        </div>
+    </section>
+</main>
 
-        <section>
-            <h2>Actualités & Événements à venir</h2>
-            <ul>
-                <li><a href="#">Journée Portes Ouvertes – Découverte du campus</a></li>
-                <li><a href="#">Conférence : Intelligence Artificielle & Cybersécurité</a></li>
-                <li><a href="#">Atelier technologique : Développement Web & Cloud</a></li>
-                <li><a href="#">Hackathon EFREI – 48h d’innovation</a></li>
-            </ul>
-        </section>
+<script>
+    const heroSection = document.getElementById('hero-3d');
+    const splineViewer = document.querySelector('spline-viewer');
+    const contenuAccueil = document.getElementById('contenu-accueil');
 
-        <section>
-            <h2>Accès rapides</h2>
-            <ul>
-                <li><a href="cours.php">Découvrir les formations</a></li>
-                <li><a href="contact.php">Admissions & Contact</a></li>
-                <li><a href="equipe.php">Entreprises & Partenariats</a></li>
-            </ul>
-        </section>
+    // 1. L'effet de fondu (Fade-out) au scroll
+    window.addEventListener('scroll', () => {
+        let scrollPosition = window.scrollY;
+        let windowHeight = window.innerHeight;
 
-    </main>
-    
-     <footer>
-        <nav>
-            <a href="contact.php">À propos</a>
-        </nav>
-        <p>&copy; 2026 - Département Informatique - EFREI Paris</p>
-    </footer>
+        // On calcule l'opacité
+        let opacity = 1 - (scrollPosition / windowHeight);
+        if (opacity < 0) opacity = 0;
 
-</body>
-</html>
+        // On applique la transparence à toute la section 3D
+        if(heroSection) {
+            heroSection.style.opacity = opacity;
+        }
+    });
+
+    // 2. Le clic sur l'animation
+    if(splineViewer && contenuAccueil) {
+        splineViewer.addEventListener('click', () => {
+            contenuAccueil.scrollIntoView({ behavior: 'smooth' });
+        });
+    }
+</script>
+
+<?php 
+require_once('includes/footer.php'); 
+?>
