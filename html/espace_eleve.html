@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Espace Élève</title>
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+
+<body>
+
+<?php include("../includes/header.php"); ?>
+
+<div class="mainarea">
+    <div class="page-container">
+
+        <h1 class="hero-title">Espace Élève</h1>
+
+        <section class="formations-container">
+
+            <!-- Demander une permanence -->
+            <div class="formation-block">
+                <div class="formation-header">Demander une permanence</div>
+                <div class="formation-content">
+                    <form action="../demande_permanence.php" method="POST">
+                        <label>ID de la permanence :</label>
+                        <input type="number" name="permanence_id" required>
+
+                        <button type="submit">S'inscrire</button>
+                    </form>
+                </div>
+            </div>
+
+            <!-- Permanences disponibles -->
+            <div class="formation-block">
+                <div class="formation-header">Permanences disponibles</div>
+                <div class="formation-content" id="permanences-disponibles"></div>
+            </div>
+
+            <!-- Mes permanences -->
+            <div class="formation-block">
+                <div class="formation-header">Mes permanences</div>
+                <div class="formation-content" id="mes-permanences"></div>
+            </div>
+
+        </section>
+
+    </div>
+</div>
+
+<script src="../js/main.js"></script>
+
+<?php include("../includes/footer.php"); ?>
+
+</body>
+</html>
