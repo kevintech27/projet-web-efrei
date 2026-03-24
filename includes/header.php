@@ -24,5 +24,6 @@
             <li><a href="cours.php">Cours & Formation</a></li>
             <li><a href="equipe.php">Équipe enseignante</a></li>
             <li><a href="contact.php">À propos / Contact</a></li>
+            <li><a href="evenement.php">Vie étudiante</a></li>
         </ul>
     </nav>

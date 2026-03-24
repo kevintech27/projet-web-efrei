@@ -1,87 +1,154 @@
-.background{
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-}
-
-*{
+/* ========================================= */
+/* 1. RESET & GLOBAUX                        */
+/* ========================================= */
+* {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
-body,
-html{
+html, body {
     height: 100%;
-    overflow-x: hidden;
+    overflow-x: hidden; /* Autorise le scroll de haut en bas, bloque la gauche/droite */
+    font-family: 'Roboto', Arial, sans-serif;
 }
 
 body {
-  margin: 0;
-  min-height: 100vh;
-  background-image: url("../image/campus-8421-Copie.jpg");
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  font-family: Arial, sans-serif;
+    margin: 0;
+    min-height: 100vh;
+    /* Le bon chemin vers ton image de secours (sans les ../) */
+    background-image: url("image/campus-8421-Copie.jpg");
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed; /* L'image reste fixe au scroll */
+    background-repeat: no-repeat;
 }
 
+/* Voile sombre en fond pour que le texte soit toujours lisible */
 body::before {
-  content: "";
-  position: fixed;
-  inset: 0;
-  background: rgba(0, 0, 0, 0.35);
-  z-index: -1;
+    content: "";
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.4);
+    z-index: -2; /* Tout au fond, derrière l'objet 3D ! */
 }
 
+/* ========================================= */
+/* 2. BARRE DE NAVIGATION (HEADER)           */
+/* ========================================= */
 .navbar {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 20px 50px;
-  background: rgba(0, 0, 0, 0.25);
-  backdrop-filter: blur(6px);
-}
-
-.menu {
-  display: flex;
-  gap: 40px;
-  list-style: none;
-  margin: 0;
-  padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px 50px;
+    background: rgba(0, 0, 0, 0.25);
+    backdrop-filter: blur(6px);
+    position: relative; /* S'assure que le menu passe par-dessus la 3D */
+    z-index: 100;
 }
 
 .logo-img {
-  width: 170px;
-  height: auto;
+    width: 170px;
+    height: auto;
+}
+
+.menu {
+    display: flex;
+    gap: 40px;
+    list-style: none;
+    margin: 0;
+    padding: 0;
 }
 
 .menu a {
-  color: white;
-  text-decoration: none;
-  font-size: 22px;
-  font-weight: 600;
-  text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.8);
-  transition: 0.3s;
+    color: white;
+    text-decoration: none;
+    font-size: 22px;
+    font-weight: 600;
+    text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.8);
+    transition: 0.3s;
 }
 
 .menu a:hover {
-  color: #4da6ff;
-  transform: scale(1.05);
+    color: #4da6ff;
+    transform: scale(1.05);
 }
 
+/* ========================================= */
+/* 3. ANIMATIONS D'APPARITION (REVEAL JS)    */
+/* ========================================= */
 
-.mainarea{
-    display: flex;
-    align-items: center;
-    flex: 1;
-    flex-direction: column;
+/* État de départ : Transparent, un peu plus bas, et réduit à 90% de sa taille */
+.reveal-element {
+    opacity: 0;
+    transform: translateY(40px) scale(0.9);
+    /* Utilisation d'une courbe "cubic-bezier" pour un rebond très clean */
+    transition: opacity 0.8s ease-out, transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-.menu li {
-  font-size: 25px; 
-  color: whitesmoke
+/* État d'arrivée : Totalement visible, à sa place, et à 100% de sa taille */
+.reveal-element.active {
+    opacity: 1;
+    transform: translateY(0) scale(1);
 }
 
+/* Petit effet de survol sur les cartes de statistiques */
+.stat-card {
+    transition: transform 0.3s ease;
+}
+.stat-card:hover {
+    transform: translateY(-10px);
+}
+
+/* ======================================================= */
+/* 1. LE FOND FIXE (3D + TEXTE)                            */
+/* ======================================================= */
+#hero-container {
+    position: fixed;
+    top: 0; left: 0; width: 100%; height: 100vh;
+    z-index: -1; /* Toujours derrière ! */
+}
+
+/* ======================================================= */
+/* 2. LE CADRE BLANC (QUI MONTE ET GROSSIT)                */
+/* ======================================================= */
+#contenu-accueil {
+    margin-top: 100vh; /* Pousse le cadre SOUS l'écran au chargement */
+    background-color: white;
+    position: relative;
+    z-index: 10; 
+    padding: 80px 20px 150px;
+    box-shadow: 0 -20px 50px rgba(0,0,0,0.3);
+    
+    /* Très important : l'agrandissement part du haut du cadre */
+    transform-origin: top center; 
+    will-change: transform; 
+    
+    /* On commence à 80% avec des gros bords arrondis */
+    transform: scale(0.8);
+    border-radius: 40px 40px 0 0;
+}
+
+/* --- LE CURSEUR CLIGNOTANT --- */
+.blinking-cursor {
+    font-weight: 800;
+    color: #4da6ff; /* Bleu clair tech */
+    animation: blink 1s step-end infinite;
+}
+
+@keyframes blink {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0; }
+}
+
+/* --- LE CURSEUR CLIGNOTANT BLANC --- */
+.blinking-cursor {
+    font-weight: 800;
+    color: #ffffff; /* Le tiret est maintenant blanc ! */
+    animation: blink 1s step-end infinite;
+}
+
+@keyframes blink {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0; }
+}
