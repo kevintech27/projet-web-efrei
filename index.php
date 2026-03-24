@@ -54,6 +54,42 @@ require_once('includes/header.php');
                 </div>
             </div>
 
+    <h2 class="reveal-element" style="color: #004d99; font-size: 2.4rem; margin-bottom: 40px; margin-top: 100px;">Projets Étudiants</h2>
+            <div class="testimonial-slider-container reveal-element" style="margin-bottom: 80px;">
+                <button class="slider-arrow prev-arrow">←</button>
+                <div class="testimonial-slider-track">
+                    
+                    <div class="testimonial-card" style="padding: 0; overflow: hidden;">
+                        <div style="height: 220px; background: #e0e0e0; display: flex; align-items: center; justify-content: center; font-size: 3rem;">🏋️‍♂️</div>
+                        <div style="padding: 30px; text-align: left;">
+                            <h3 style="margin-bottom: 10px; color: #333; font-size: 1.5rem;">FitTrack AI</h3>
+                            <p style="color: #666; font-size: 1rem; line-height: 1.5;">Application mobile utilisant le Machine Learning pour corriger la posture des athlètes en temps réel.</p>
+                            <p style="color: #004d99; font-weight: bold; margin-top: 20px; font-size: 0.9rem;">Par les M1 Dev Web</p>
+                        </div>
+                    </div>
+
+                    <div class="testimonial-card" style="padding: 0; overflow: hidden;">
+                        <div style="height: 220px; background: #e0e0e0; display: flex; align-items: center; justify-content: center; font-size: 3rem;">🔒</div>
+                        <div style="padding: 30px; text-align: left;">
+                            <h3 style="margin-bottom: 10px; color: #333; font-size: 1.5rem;">CyberShield</h3>
+                            <p style="color: #666; font-size: 1rem; line-height: 1.5;">Outil de détection d'intrusions réseaux développé lors du dernier hackathon CTF de l'école.</p>
+                            <p style="color: #004d99; font-weight: bold; margin-top: 20px; font-size: 0.9rem;">Par le Club Cybersécurité</p>
+                        </div>
+                    </div>
+
+                    <div class="testimonial-card" style="padding: 0; overflow: hidden;">
+                        <div style="height: 220px; background: #e0e0e0; display: flex; align-items: center; justify-content: center; font-size: 3rem;">🤖</div>
+                        <div style="padding: 30px; text-align: left;">
+                            <h3 style="margin-bottom: 10px; color: #333; font-size: 1.5rem;">RoboRescue</h3>
+                            <p style="color: #666; font-size: 1rem; line-height: 1.5;">Robot autonome capable de cartographier des zones sinistrées grâce à des capteurs Lidar.</p>
+                            <p style="color: #004d99; font-weight: bold; margin-top: 20px; font-size: 0.9rem;">Par les L3 Systèmes Embarqués</p>
+                        </div>
+                    </div>
+
+                </div>
+                <button class="slider-arrow next-arrow">→</button>
+            </div>
+
             <h2 class="reveal-element" style="color: #004d99; font-size: 2.4rem; margin-bottom: 40px;">Ils ont fait l'EFREI</h2>
             <div class="testimonial-slider-container reveal-element" style="margin-bottom: 80px;">
                 <button class="slider-arrow prev-arrow">←</button>
