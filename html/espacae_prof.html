@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Espace Professeur</title>
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+
+<body>
+
+<?php include("../includes/header.php"); ?>
+
+<div class="mainarea">
+    <div class="page-container">
+
+        <h1 class="hero-title">Espace Professeur</h1>
+
+        <section class="formations-container">
+
+            <!-- Créer une permanence -->
+            <div class="formation-block highlight">
+                <div class="formation-header">Créer une permanence</div>
+                <div class="formation-content">
+                    <form action="../create_permanence.php" method="POST">
+                        <label>Matière :</label>
+                        <input type="text" name="matiere" required>
+
+                        <label>Date :</label>
+                        <input type="date" name="date" required>
+
+                        <label>Heure :</label>
+                        <input type="time" name="heure" required>
+
+                        <button type="submit">Créer</button>
+                    </form>
+                </div>
+            </div>
+
+            <!-- Permanences créées -->
+            <div class="formation-block">
+                <div class="formation-header">Permanences créées</div>
+                <div class="formation-content" id="permanences-prof"></div>
+            </div>
+
+        </section>
+
+    </div>
+</div>
+
+<script src="../js/main.js"></script>
+
+<?php include("../includes/footer.php"); ?>
+
+</body>
+</html>
