@@ -26,8 +26,8 @@
     </section>
 
     <section>
-      <h2>Clubs et associations</h2>
-      <p>De nombreuses associations étudiantes sont liés à différents domaines dans l'école :</p>
+      <h2>Découvrez tout les clubs et associations étudiantes</h2>
+      <p>De nombreuses associations étudiantes sont liés à différents domaines dans l'école comme Sport, tech, culture, humanitaire, médias… la vie associative de l’Efrei est riche et variée</p>
     <ul>
     <li>
     
@@ -53,8 +53,8 @@
     </section>
 
     <section>
-      <h2>Témoignages</h2>
-      <p>Des étudiants actuels et des anciens (alumni) partagent leurs expériences, leurs projets et leurs parcours professionnels après l’EFREI.</p>
+      <h2>Témoignages pour découvrir le parcours des alumnis</h2>
+      <p>Des étudiants actuels et des anciens (alumni) partagent leurs expériences, projets et parcours professionnels après leurs expériences d'études l’EFREI.</p>
       <p>Ces témoignages mettent en avant la richesse de la vie étudiante et la qualité de l’accompagnement pédagogique.</p>
     </section>
 
