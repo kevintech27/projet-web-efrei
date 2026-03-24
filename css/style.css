@@ -16,7 +16,6 @@ html, body {
 body {
     margin: 0;
     min-height: 100vh;
-    /* Le bon chemin vers ton image de secours (sans les ../) */
     background-image: url("image/campus-8421-Copie.jpg");
     background-size: cover;
     background-position: center;
@@ -26,23 +25,30 @@ body {
 
 /* Voile sombre en fond pour que le texte soit toujours lisible */
 body::before {
-  content: "";
-  position: fixed;
-  inset: 0;
-  background: rgba(0, 0, 0, 0.35);
-  z-index: -1;
+    content: "";
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.45);
+    z-index: -2; /* Tout au fond, derrière l'objet 3D ! */
 }
 
 /* ========================================= */
 /* 2. BARRE DE NAVIGATION (HEADER)           */
 /* ========================================= */
 .navbar {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 20px 50px;
-  background: rgba(0, 0, 0, 0.25);
-  backdrop-filter: blur(6px);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px 50px;
+    background: rgba(0, 0, 0, 0.25);
+    backdrop-filter: blur(6px);
+    position: relative; /* S'assure que le menu passe par-dessus la 3D */
+    z-index: 100;
+}
+
+.logo-img {
+    width: 170px;
+    height: auto;
 }
 
 .menu {
@@ -67,16 +73,233 @@ body::before {
     transform: scale(1.05);
 }
 
+/* ========================================= */
+/* 3. ANIMATIONS D'ACCUEIL (TON TRAVAIL)     */
+/* ========================================= */
 
-.mainarea{
+.reveal-element {
+    opacity: 0;
+    transform: translateY(40px) scale(0.9);
+    transition: opacity 0.8s ease-out, transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.reveal-element.active {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+}
+
+.stat-card {
+    transition: transform 0.3s ease;
+}
+
+.stat-card:hover {
+    transform: translateY(-10px);
+}
+
+#hero-container {
+    position: fixed;
+    top: 0; left: 0; width: 100%; height: 100vh;
+    z-index: -1; 
+}
+
+#contenu-accueil {
+    margin-top: 100vh; 
+    background-color: white;
+    position: relative;
+    z-index: 10; 
+    padding: 80px 20px 150px;
+    box-shadow: 0 -20px 50px rgba(0,0,0,0.3);
+    transform-origin: top center; 
+    will-change: transform; 
+    transform: scale(0.8);
+    border-radius: 40px 40px 0 0;
+}
+
+.blinking-cursor {
+    font-weight: 800;
+    color: #ffffff; 
+    animation: blink 1s step-end infinite;
+}
+
+@keyframes blink {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0; }
+}
+
+/* ========================================= */
+/* 4. DESIGN PAGE ÉQUIPE (TRAVAIL CAMARADE)  */
+/* ========================================= */
+
+.team-page-bg {
+    background: linear-gradient(rgba(0,0,0,0.45), rgba(0,0,0,0.45)),
+                url('image/campus-8421-Copie.jpg') center/cover no-repeat;
+    padding: 70px 4% 90px;
+    min-height: 100vh;
+}
+
+.team-showcase {
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+.team-header {
+    text-align: center;
+    margin-bottom: 45px;
+}
+
+.team-header h1 {
+    font-size: 48px;
+    color: white;
+    margin-bottom: 12px;
+    font-weight: 700;
+    text-shadow: 0 2px 8px rgba(0,0,0,0.25);
+}
+
+.team-header p {
+    font-size: 18px;
+    color: white;
+    max-width: 850px;
+    margin: 0 auto;
+    line-height: 1.6;
+    text-shadow: 0 2px 8px rgba(0,0,0,0.25);
+}
+
+.team-wrapper {
+    position: relative;
     display: flex;
     align-items: center;
-    flex: 1;
-    flex-direction: column;
 }
 
-.menu li {
-  font-size: 25px; 
-  color: whitesmoke
+.team-slider {
+    display: flex;
+    gap: 40px;
+    overflow-x: hidden;
+    scroll-behavior: smooth;
+    width: 100%;
 }
 
+.team-card {
+    min-width: 780px;
+    max-width: 780px;
+    flex-shrink: 0;
+    background: rgba(255, 255, 255, 0.96);
+    border-radius: 36px;
+    padding: 18px;
+    box-shadow: 0 12px 35px rgba(0, 0, 0, 0.18);
+}
+
+.team-image {
+    position: relative;
+    height: 500px;
+    border-radius: 28px;
+    overflow: hidden;
+    background: #d9d9d9;
+}
+
+.team-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.team-overlay {
+    position: absolute;
+    left: 45px;
+    top: 50%;
+    transform: translateY(-50%);
+    max-width: 300px;
+}
+
+.team-overlay h2 {
+    color: white;
+    font-size: 54px;
+    line-height: 0.95;
+    font-weight: 300;
+    margin: 0;
+    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.35);
+}
+
+.team-content {
+    padding: 24px 8px 8px;
+}
+
+.team-content h3 {
+    font-size: 32px;
+    color: #1f1f1f;
+    margin-bottom: 12px;
+    font-weight: 700;
+}
+
+.team-content p {
+    font-size: 18px;
+    color: #4d4d4d;
+    line-height: 1.6;
+    max-width: 680px;
+    margin: 0;
+}
+
+.team-arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 20;
+    width: 58px;
+    height: 58px;
+    border: none;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.92);
+    color: #1f1f1f;
+    font-size: 28px;
+    cursor: pointer;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.12);
+    transition: 0.3s ease;
+}
+
+.team-arrow:hover {
+    background: #0077b6;
+    color: white;
+}
+
+.team-arrow-left {
+    left: 15px;
+}
+
+.team-arrow-right {
+    right: 15px;
+}
+
+@media screen and (max-width: 900px) {
+    .team-card {
+        min-width: 100%;
+        max-width: 100%;
+        padding: 14px;
+    }
+
+    .team-image {
+        height: 360px;
+    }
+
+    .team-overlay {
+        left: 25px;
+        max-width: 220px;
+    }
+
+    .team-overlay h2 {
+        font-size: 34px;
+    }
+
+    .team-content h3 {
+        font-size: 24px;
+    }
+
+    .team-content p {
+        font-size: 16px;
+    }
+
+    .team-arrow {
+        width: 48px;
+        height: 48px;
+        font-size: 22px;
+    }
+}
