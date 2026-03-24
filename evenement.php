@@ -4,7 +4,7 @@ $page = "evenement";
 <?php include 'includes/header.php'; ?>
 <body>
   <h1 class="titre-evenement"> Évènements & Vie étudiante </h1>
-  <main class="container">
+  <main class="evenement-container">
     <section class="installations">
       <h2>Campus et infrastructures informatique</h2>
       <p>Le campus de Villejuif offre des laboratoires informatiques modernes, des espaces de coworking, des salles de projet et des ressources numériques accessibles aux étudiants.</p>

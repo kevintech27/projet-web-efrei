@@ -450,78 +450,122 @@ body::before {
 /* ZONE 4 : ALEXANDRE (ÉVÈNEMENTS)                         */
 /* ========================================================================== */
 /* Alexandre : Mets tout le CSS de la page evenement.php ici en dessous ! */
-/* Mon CSS est de la ligne 291 à 361 mais A chaque fois que je le mettais ici quelqu'un modifiait ici 
-ducoup mon CSS s'enlevait se remettait la ou il était avant Il y avait quelques conflits dans le fichier*/
+
+.titre-evenement {
+    text-align: center;
+    font-size: 42px;
+    color: white;
+    margin-top: 40px;
+    margin-bottom: 30px;
+    text-shadow: 2px 2px 8px rgba(0,0,0,0.7);
+    font-weight: 700;
+}
 
 .evenement-container {
-    max-width: 1000px;
+    max-width: 1100px;
     margin: 0 auto;
-    padding: 40px 20px;
+    padding: 20px;
     color: white;
 }
 
-.event-section {
+
+.installations,
+.associations,
+.projets {
     background: rgba(0, 0, 0, 0.35);
     padding: 20px;
     border-radius: 12px;
-    margin-bottom: 35px;
+    margin-bottom: 30px;
 }
 
-/* Titres */
-.event-section h2 {
-    font-size: 28px;
-    margin-bottom: 15px;
+.installations h2,
+.associations h2,
+.projets h2 {
+    font-size: 26px;
+    margin-bottom: 12px;
     text-shadow: 2px 2px 6px rgba(0,0,0,0.6);
 }
 
-/* Paragraphes */
-.event-section p {
-    font-size: 17px;
+.installations p,
+.associations p,
+.projets p {
+    font-size: 16px;
     line-height: 1.6;
-    margin-bottom: 12px;
+    margin-bottom: 10px;
 }
 
 
-.event-list {
+.galerie-campus,
+.liste-assos,
+.liste-projets {
     list-style: none;
     padding-left: 0;
 }
 
-.event-list li {
+.galerie-campus li,
+.liste-assos li,
+.liste-projets li {
     display: flex;
     align-items: center;
     gap: 12px;
     background: rgba(255, 255, 255, 0.08);
     padding: 10px;
     border-radius: 10px;
-    margin-bottom: 15px;
+    margin-bottom: 12px;
 }
 
-/* Images */
-.event-list img {
-    width: 90px;
+.galerie-campus img,
+.liste-assos img,
+.liste-projets img {
     border-radius: 8px;
+    box-shadow: 0 3px 8px rgba(0,0,0,0.4);
 }
 
-/* Texte sous image */
-.event-list figcaption {
-    font-size: 16px;
+.galerie-campus img {
+    width: 110px;
+}
+
+.liste-assos img,
+.liste-projets img {
+    width: 60px;
+}
+
+figure {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin: 0;
+}
+
+figcaption {
+    font-size: 15px;
     line-height: 1.4;
+    color: white;
 }
 
-@media (max-width: 700px) {
 
-    .event-list li {
+@media (max-width: 800px) {
+
+    .titre-evenement {
+        font-size: 32px;
+        margin-top: 30px;
+    }
+
+    .galerie-campus li,
+    .liste-assos li,
+    .liste-projets li {
         flex-direction: column;
         text-align: center;
     }
 
-    .event-list img {
+    .galerie-campus img,
+    .liste-assos img,
+    .liste-projets img {
         width: 70px;
     }
 
-    .event-section h2 {
-        font-size: 24px;
+    figcaption {
+        font-size: 14px;
     }
 }
 
