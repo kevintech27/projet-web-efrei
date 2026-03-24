@@ -108,4 +108,5 @@ $page = "evenement";
     </section>
   </main>
 </body>
+  <script src="animations.js"></script>
   <?php include 'includes/footer.php'; ?>
