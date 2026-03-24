@@ -1,7 +1,7 @@
 <?php
 $page = "evenement";
 ?>
-<?php include 'includes/header.php'; ?> 
+<?php include 'includes/header.php'; ?>
 
   <main class="container">
     <section class="installations">
