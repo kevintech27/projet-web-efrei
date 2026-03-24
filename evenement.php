@@ -1,26 +1,9 @@
-<!DOCTYPE HTML>
-<html lang="fr">
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Evenements et Vie étudiante - Département Informatique EFREI</title>
-  <link rel="stylesheet" href="styles.css">
-</head>
-<body>
-  <header>
-    <h1>Vie Étudiante &amp; Campus</h1>
-    <nav class="menu-principal">
-      <ul>
-        <li><a href="accueil.html">Accueil</a></li>
-        <li><a href="cours.php">Cours et Formations</a></li>
-        <li><a href="equipe.php">Équipe d'enseignement</a></li>
-        <li><a href="evenement.php">Evenements et Vie étudiante</a></li>
-        <li><a href="contact.php">À propos</a></li>
-      </ul>
-    </nav>
-  </header>
+<?php
+$page = "evenement";
+?>
+<?php include("header.php"); ?> 
 
-  <main>
+  <main class="container">
     <section class="installations">
       <h2>Campus et infrastructures informatique</h2>
       <p>Le campus de Villejuif offre des laboratoires informatiques modernes, des espaces de coworking, des salles de projet et des ressources numériques accessibles aux étudiants.</p>
@@ -124,11 +107,4 @@
     </section>
   </main>
 
-  <footer>
-    <nav class="menu-footer">
-      <a href="contact.php">À propos</a>
-    </nav>
-    <p>&copy; EFREI Paris - Département Informatique</p>
-  </footer>
-</body>
-</html>
+  <?php include("footer.php"); ?>
