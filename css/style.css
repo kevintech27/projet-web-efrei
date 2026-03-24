@@ -235,7 +235,6 @@ body::before {
     transition: 0.3s ease; 
 }
 
-<<<<<<< HEAD
 .team-arrow:hover {
     background: #0077b6;
     color: white;
@@ -358,7 +357,6 @@ body::before {
     .event-section h2 {
         font-size: 24px;
     }
-=======
 .formation-block.open .formation-header::after { 
     content: "–"; 
     transform: translateY(-50%) rotate(180deg); 
@@ -375,7 +373,6 @@ body::before {
 .formation-content.open { 
     padding: 20px; 
     max-height: 600px; 
->>>>>>> 4b2d4ff (Répartition des roles dans le CSS)
 }
 
 
