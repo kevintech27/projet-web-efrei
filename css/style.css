@@ -360,6 +360,7 @@ body::before {
     }
 }
 
+/* Je pense que le début du CSS en dessous c'est pour la page cours et formations, dites moi si c'est ça ou pas */
 
 .formation-block.open .formation-header::after { 
     content: "–"; 
