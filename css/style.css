@@ -235,6 +235,7 @@ body::before {
     transition: 0.3s ease; 
 }
 
+<<<<<<< HEAD
 .team-arrow:hover {
     background: #0077b6;
     color: white;
@@ -357,6 +358,8 @@ body::before {
     .event-section h2 {
         font-size: 24px;
     }
+=======
+>>>>>>> b093737 (Restauration finale et sécurisée de toutes les zones CSS)
 .formation-block.open .formation-header::after { 
     content: "–"; 
     transform: translateY(-50%) rotate(180deg); 
@@ -522,8 +525,60 @@ body::before {
 /* ========================================================================== */
 /* ========================================================================== */
 
-/* Alexandre : Mets tout le CSS de la page evenement.php ici en dessous ! */
+.evenement-container {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 40px 20px;
+    color: white;
+}
 
+.event-section {
+    background: rgba(0, 0, 0, 0.35);
+    padding: 20px;
+    border-radius: 12px;
+    margin-bottom: 35px;
+}
+
+/* Titres */
+.event-section h2 {
+    font-size: 28px;
+    margin-bottom: 15px;
+    text-shadow: 2px 2px 6px rgba(0,0,0,0.6);
+}
+
+/* Paragraphes */
+.event-section p {
+    font-size: 17px;
+    line-height: 1.6;
+    margin-bottom: 12px;
+}
+
+.event-list {
+    list-style: none;
+    padding-left: 0;
+}
+
+.event-list li {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    background: rgba(255, 255, 255, 0.08);
+    padding: 10px;
+    border-radius: 10px;
+    margin-bottom: 15px;
+}
+
+/* Images */
+.event-list img {
+    width: 90px;
+    border-radius: 8px;
+}
+
+/* Texte sous image */
+.event-list figcaption {
+    font-size: 16px;
+    line-height: 1.4;
+}
 
 
 /* ========================================================================== */
@@ -547,6 +602,13 @@ body::before {
     .testimonial-card { flex: 0 0 calc(50% - 15px); }
     .prev-arrow { left: 10px; } 
     .next-arrow { right: 10px; }
+}
+
+@media (max-width: 700px) {
+    /* Évènements */
+    .event-list li { flex-direction: column; text-align: center; }
+    .event-list img { width: 70px; }
+    .event-section h2 { font-size: 24px; }
 }
 
 @media (max-width: 600px) {
