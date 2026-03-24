@@ -527,7 +527,10 @@ body::before {
 /* ========================================================================== */
 
 /* Alexandre : Mets tout le CSS de la page evenement.php ici en dessous ! */
-
+/* Mon CSS est de la ligne 291 à 361*/
+/* A chaque fois que je le mettais ici quelqu'un modifiait ici 
+ducoup mon CSS s'enlevait se remettait la ou il était avant*/
+/* Il y avait quelques conflits dans le fichier*/
 
 
 /* ========================================================================== */
