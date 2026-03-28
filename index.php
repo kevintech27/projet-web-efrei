@@ -3,10 +3,13 @@ $pageTitle = "Accueil - Département Informatique EFREI";
 require_once('includes/header.php'); 
 ?>
 
-<main>
-    <div id="hero-fixed" style="position: fixed; top: 0; left: 0; width: 100%; height: 100vh; z-index: -1; background: #050505;">
-        <spline-viewer url="https://prod.spline.design/bBkUEMOHUEx2Tev5/scene.splinecode" style="width: 100%; height: 100%;"></spline-viewer>
+<script type="module" src="https://unpkg.com/@splinetool/viewer@1.12.72/build/spline-viewer.js"></script>
 
+<main>
+    <div id="hero-fixed" style="position: fixed; top: 0; left: 0; width: 100%; height: 100vh; background: #050505;">
+        
+        <spline-viewer url="https://prod.spline.design/18Ak-VrL3f8lWDuR/scene.splinecode"></spline-viewer>
+        
         <section id="hero-text" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; display: flex; flex-direction: column; justify-content: center; padding: 0 5%; pointer-events: none;">
             <h1 style="color: white; font-size: 4.5rem; font-weight: 800; line-height: 1.1; margin-bottom: 20px; text-shadow: 0px 4px 15px rgba(0,0,0,0.8);">
                 Façonner le futur <br>
@@ -54,61 +57,38 @@ require_once('includes/header.php');
                 </div>
             </div>
 
-    <h2 class="reveal-element" style="color: #004d99; font-size: 2.4rem; margin-bottom: 40px; margin-top: 100px;">Projets Étudiants</h2>
+            <h2 class="reveal-element" style="color: #004d99; font-size: 2.4rem; margin-bottom: 40px; margin-top: 100px;">Parcours & Témoignages</h2>
             <div class="testimonial-slider-container reveal-element" style="margin-bottom: 80px;">
                 <button class="slider-arrow prev-arrow">←</button>
                 <div class="testimonial-slider-track">
                     
                     <div class="testimonial-card" style="padding: 0; overflow: hidden;">
-                        <div style="height: 220px; background: #e0e0e0; display: flex; align-items: center; justify-content: center; font-size: 3rem;">🏋️‍♂️</div>
+                        <img src="image/campus-8421-Copie.jpg" alt="Photo de l'élève" style="width: 100%; height: 250px; object-fit: cover; background: #eee;">
                         <div style="padding: 30px; text-align: left;">
-                            <h3 style="margin-bottom: 10px; color: #333; font-size: 1.5rem;">FitTrack AI</h3>
-                            <p style="color: #666; font-size: 1rem; line-height: 1.5;">Application mobile utilisant le Machine Learning pour corriger la posture des athlètes en temps réel.</p>
-                            <p style="color: #004d99; font-weight: bold; margin-top: 20px; font-size: 0.9rem;">Par les M1 Dev Web</p>
+                            <p style="font-style: italic; color: #555; font-size: 1rem; line-height: 1.5; margin-bottom: 20px;">"Une formation technique d'excellence couplée à une ouverture sur le monde de l'entreprise. J'ai été embauché avant même mon diplôme !"</p>
+                            <h3 style="margin-bottom: 5px; color: #333; font-size: 1.3rem;">Jean Dupont</h3>
+                            <p style="color: #004d99; font-weight: bold; font-size: 0.9rem;">Lead Developer Web</p>
                         </div>
                     </div>
 
                     <div class="testimonial-card" style="padding: 0; overflow: hidden;">
-                        <div style="height: 220px; background: #e0e0e0; display: flex; align-items: center; justify-content: center; font-size: 3rem;">🔒</div>
+                        <img src="image/campus-8421-Copie.jpg" alt="Photo de l'élève" style="width: 100%; height: 250px; object-fit: cover; background: #eee;">
                         <div style="padding: 30px; text-align: left;">
-                            <h3 style="margin-bottom: 10px; color: #333; font-size: 1.5rem;">CyberShield</h3>
-                            <p style="color: #666; font-size: 1rem; line-height: 1.5;">Outil de détection d'intrusions réseaux développé lors du dernier hackathon CTF de l'école.</p>
-                            <p style="color: #004d99; font-weight: bold; margin-top: 20px; font-size: 0.9rem;">Par le Club Cybersécurité</p>
+                            <p style="font-style: italic; color: #555; font-size: 1rem; line-height: 1.5; margin-bottom: 20px;">"Le parcours Master en Cybersécurité m'a permis de me spécialiser très tôt. L'ambiance sur le campus et le matériel sont tops."</p>
+                            <h3 style="margin-bottom: 5px; color: #333; font-size: 1.3rem;">Sarah Martin</h3>
+                            <p style="color: #004d99; font-weight: bold; font-size: 0.9rem;">Analyste Sécurité (SOC)</p>
                         </div>
                     </div>
 
                     <div class="testimonial-card" style="padding: 0; overflow: hidden;">
-                        <div style="height: 220px; background: #e0e0e0; display: flex; align-items: center; justify-content: center; font-size: 3rem;">🤖</div>
+                        <img src="image/campus-8421-Copie.jpg" alt="Photo de l'élève" style="width: 100%; height: 250px; object-fit: cover; background: #eee;">
                         <div style="padding: 30px; text-align: left;">
-                            <h3 style="margin-bottom: 10px; color: #333; font-size: 1.5rem;">RoboRescue</h3>
-                            <p style="color: #666; font-size: 1rem; line-height: 1.5;">Robot autonome capable de cartographier des zones sinistrées grâce à des capteurs Lidar.</p>
-                            <p style="color: #004d99; font-weight: bold; margin-top: 20px; font-size: 0.9rem;">Par les L3 Systèmes Embarqués</p>
+                            <p style="font-style: italic; color: #555; font-size: 1rem; line-height: 1.5; margin-bottom: 20px;">"Alternance de 2 ans en Data Science. Aujourd'hui, je gère des projets IA passionnants. Un immense merci à l'équipe pédagogique de l'EFREI."</p>
+                            <h3 style="margin-bottom: 5px; color: #333; font-size: 1.3rem;">Pierre Bernard</h3>
+                            <p style="color: #004d99; font-weight: bold; font-size: 0.9rem;">Ingénieur IA & Data</p>
                         </div>
                     </div>
 
-                </div>
-                <button class="slider-arrow next-arrow">→</button>
-            </div>
-
-            <h2 class="reveal-element" style="color: #004d99; font-size: 2.4rem; margin-bottom: 40px;">Ils ont fait l'EFREI</h2>
-            <div class="testimonial-slider-container reveal-element" style="margin-bottom: 80px;">
-                <button class="slider-arrow prev-arrow">←</button>
-                <div class="testimonial-slider-track">
-                    <div class="testimonial-card">
-                        <p class="alumni-quote">"Une formation technique d'excellence couplée à une ouverture sur le monde de l'entreprise."</p>
-                        <p class="alumni-name">Jean Dupont</p>
-                        <p class="alumni-job">CTO @ TechStartup</p>
-                    </div>
-                    <div class="testimonial-card">
-                        <p class="alumni-quote">"L'ambiance et les projets m'ont préparée aux défis de la cybersécurité."</p>
-                        <p class="alumni-name">Sarah Martin</p>
-                        <p class="alumni-job">Security Analyst</p>
-                    </div>
-                    <div class="testimonial-card">
-                        <p class="alumni-quote">"Le parcours Data Science m'a permis de développer des compétences de pointe."</p>
-                        <p class="alumni-name">Pierre Bernard</p>
-                        <p class="alumni-job">AI Engineer</p>
-                    </div>
                 </div>
                 <button class="slider-arrow next-arrow">→</button>
             </div>

@@ -1,7 +1,7 @@
 /* ========================================================================== */
-/* ========================================================================== */
-/* ZONE 1 : KEVIN (GLOBAL & ACCUEIL)                       */
-/* ========================================================================== */
+/* */
+/* ZONE 1 : KEVIN (GLOBAL, ACCUEIL & CONTACT)                 */
+/* */
 /* ========================================================================== */
 
 /* --- RESET GLOBAL --- */
@@ -12,7 +12,6 @@
 }
 
 html, body { 
-    height: 100%; 
     overflow-x: hidden; 
     font-family: 'Roboto', Arial, sans-serif; 
 }
@@ -28,6 +27,7 @@ body {
     background-repeat: no-repeat; 
 }
 
+/* Le voile noir sur l'image de fond */
 body::before { 
     content: ""; 
     position: fixed; 
@@ -37,6 +37,7 @@ body::before {
 }
 
 /* --- NAVBAR (HEADER) --- */
+/* --- NAVBAR (HEADER) INTELLIGENTE --- */
 .navbar { 
     display: flex; 
     align-items: center; 
@@ -44,45 +45,39 @@ body::before {
     padding: 20px 50px; 
     background: rgba(0, 0, 0, 0.25); 
     backdrop-filter: blur(6px); 
-    position: relative; 
-    z-index: 100; 
+    
+    /* MODIFICATIONS ICI : Fixed pour suivre le scroll */
+    position: fixed; 
+    top: 0; left: 0; width: 100%;
+    z-index: 1000; /* Toujours tout au-dessus */
+    transition: transform 0.4s ease, background-color 0.4s ease, box-shadow 0.4s ease;
 }
 
-.logo-img { 
-    width: 170px; 
-    height: auto; 
+.navbar.scrolled {
+    background-color: #004d99 !important;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.5);
 }
 
-.menu { 
-    display: flex; 
-    gap: 40px; 
-    list-style: none; 
-    margin: 0; 
-    padding: 0;
+/* La classe ajoutée par le JS pour cacher la barre */
+.navbar-hidden {
+    transform: translateY(-100%);
 }
 
-.menu a { 
-    color: white; 
-    text-decoration: none; 
-    font-size: 22px; 
-    font-weight: 600; 
-    text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.8); 
-    transition: 0.3s; 
-}
-
-.menu a:hover { 
-    color: #4da6ff; 
-    transform: scale(1.05); 
-}
+.logo-img { width: 170px; height: auto; }
+.menu { display: flex; gap: 40px; list-style: none; margin: 0; padding: 0;}
+.menu a { color: white; text-decoration: none; font-size: 22px; font-weight: 600; text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.8); transition: 0.3s; }
+.menu a:hover { color: #4da6ff; transform: scale(1.05); }
 
 /* --- ACCUEIL : ANIMATIONS & HOOK 3D --- */
-#hero-container { 
+/* Z-index passé à 1 pour activer la souris sur l'objet 3D Spline ! */
+#hero-container, #hero-fixed { 
     position: fixed; 
     top: 0; left: 0; width: 100%; height: 100vh; 
-    z-index: -1; 
+    z-index: 1; 
 }
 
-#contenu-accueil { 
+/* Le cadre qui monte par-dessus la 3D (Z-index 10) */
+#contenu-accueil, #cadre-blanc { 
     margin-top: 100vh; 
     background-color: white; 
     position: relative; 
@@ -94,501 +89,90 @@ body::before {
     border-radius: 40px 40px 0 0; 
 }
 
-.blinking-cursor { 
-    font-weight: 800; 
-    color: #ffffff; 
-    animation: blink 1s step-end infinite; 
-}
+.blinking-cursor { font-weight: 800; color: #ffffff; animation: blink 1s step-end infinite; }
+@keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0; } }
 
-@keyframes blink { 
-    0%, 100% { opacity: 1; } 
-    50% { opacity: 0; } 
-}
-
-.reveal-element { 
-    opacity: 0; 
-    transform: translateY(40px) scale(0.9); 
-    transition: opacity 0.8s ease-out, transform 0.8s cubic-bezier(0.16, 1, 0.3, 1); 
-}
-
-.reveal-element.active { 
-    opacity: 1; 
-    transform: translateY(0) scale(1); 
-}
-
-.stat-card { 
-    transition: transform 0.3s ease; 
-}
-
-.stat-card:hover { 
-    transform: translateY(-10px); 
-}
+.reveal-element { opacity: 0; transform: translateY(40px) scale(0.9); transition: opacity 0.8s ease-out, transform 0.8s cubic-bezier(0.16, 1, 0.3, 1); }
+.reveal-element.active { opacity: 1; transform: translateY(0) scale(1); }
+.stat-card { transition: transform 0.3s ease; }
+.stat-card:hover { transform: translateY(-10px); }
 
 /* --- ACCUEIL : SLIDER (PROJETS / ALUMNI) --- */
-.testimonial-slider-container { 
-    position: relative; 
-    max-width: 1100px; 
-    margin: 0 auto; 
-    overflow: visible; 
-}
-
-.testimonial-slider-track { 
-    display: flex; 
-    gap: 30px; 
-    overflow-x: auto; 
-    padding: 30px 0; 
-    scroll-snap-type: x mandatory; 
-    scrollbar-width: none; 
-}
-
-.testimonial-slider-track::-webkit-scrollbar { 
-    display: none; 
-}
-
-.testimonial-card { 
-    flex: 0 0 calc(33.33% - 20px); 
-    min-width: 300px; 
-    background: white; 
-    padding: 40px; 
-    border-radius: 12px; 
-    box-shadow: 0 10px 30px rgba(0,0,0,0.08); 
-    scroll-snap-align: center; 
-    text-align: left; 
-    display: flex; 
-    flex-direction: column; 
-}
-
-.slider-arrow { 
-    position: absolute; 
-    top: 50%; 
-    transform: translateY(-50%); 
-    background: #004d99; 
-    color: white; 
-    border: none; 
-    border-radius: 50%; 
-    width: 50px; 
-    height: 50px; 
-    font-size: 1.6rem; 
-    font-weight: bold; 
-    cursor: pointer; 
-    z-index: 2; 
-    transition: 0.3s; 
-}
-
-.slider-arrow:hover { 
-    background-color: #002244; 
-    transform: translateY(-50%) scale(1.1); 
-}
-
-.prev-arrow { left: -25px; } 
-.next-arrow { right: -25px; }
+.testimonial-slider-container { position: relative; max-width: 1100px; margin: 0 auto; overflow: visible; }
+.testimonial-slider-track { display: flex; gap: 30px; overflow-x: auto; padding: 30px 0; scroll-snap-type: x mandatory; scrollbar-width: none; }
+.testimonial-slider-track::-webkit-scrollbar { display: none; }
+.testimonial-card { flex: 0 0 calc(33.33% - 20px); min-width: 300px; background: white; padding: 40px; border-radius: 12px; box-shadow: 0 10px 30px rgba(0,0,0,0.08); scroll-snap-align: center; text-align: left; display: flex; flex-direction: column; }
+.slider-arrow { position: absolute; top: 50%; transform: translateY(-50%); background: #004d99; color: white; border: none; border-radius: 50%; width: 50px; height: 50px; font-size: 1.6rem; font-weight: bold; cursor: pointer; z-index: 2; transition: 0.3s; }
+.slider-arrow:hover { background-color: #002244; transform: translateY(-50%) scale(1.1); }
+.prev-arrow { left: -25px; } .next-arrow { right: -25px; }
 
 
 /* ========================================================================== */
+/* */
+/* ZONE 2 : AMIR (COURS & FORMATIONS)                       */
+/* */
 /* ========================================================================== */
-/* ZONE 2 : AMIR (COURS & FORMATIONS)                      */
-/* ========================================================================== */
-/* ========================================================================== */
 
-.formations-container { 
-    display: flex; 
-    flex-direction: column; 
-    gap: 25px; 
-    margin-top: 40px; 
-}
-
-.formation-block { 
-    background: rgba(0, 0, 0, 0.55); 
-    border-radius: 15px; 
-    backdrop-filter: blur(10px); 
-    box-shadow: 0 0 20px rgba(0,0,0,0.5); 
-    overflow: hidden; 
-    transition: 0.3s; 
-    cursor: pointer; 
-}
-
-.highlight { 
-    border: 2px solid #4da6ff; 
-    box-shadow: 0 0 25px rgba(77,166,255,0.6); 
-}
-
-.formation-header { 
-    padding: 20px; 
-    font-size: 26px; 
-    font-weight: 700; 
-    color: #4da6ff !important; 
-    background: rgba(0,0,0,0.65); 
-    text-shadow: 0 0 6px black; 
-    position: relative; 
-    padding-right: 40px; 
-}
-
-.formation-header::after { 
-    content: "+"; 
-    position: absolute; 
-    right: 20px; 
-    top: 50%; 
-    transform: translateY(-50%); 
-    font-size: 26px; 
-    font-weight: 700; 
-    color: #4da6ff; 
-    transition: 0.3s ease; 
-}
-
-<<<<<<< HEAD
-.team-arrow:hover {
-    background: #0077b6;
-    color: white;
-}
-
-.team-arrow-left {
-    left: 15px;
-}
-
-.team-arrow-right {
-    right: 15px;
-}
-
-@media screen and (max-width: 900px) {
-    .team-card {
-        min-width: 100%;
-        max-width: 100%;
-        padding: 14px;
-    }
-
-    .team-image {
-        height: 360px;
-    }
-
-    .team-overlay {
-        left: 25px;
-        max-width: 220px;
-    }
-
-    .team-overlay h2 {
-        font-size: 34px;
-    }
-
-    .team-content h3 {
-        font-size: 24px;
-    }
-
-    .team-content p {
-        font-size: 16px;
-    }
-
-    .team-arrow {
-        width: 48px;
-        height: 48px;
-        font-size: 22px;
-    }
-}
-
-/* ========================================= */
-/* 6. EVENEMENTS                             */
-/* ========================================= */
-
-.evenement-container {
-    max-width: 1000px;
-    margin: 0 auto;
-    padding: 40px 20px;
-    color: white;
-}
-
-.event-section {
-    background: rgba(0, 0, 0, 0.35);
-    padding: 20px;
-    border-radius: 12px;
-    margin-bottom: 35px;
-}
-
-/* Titres */
-.event-section h2 {
-    font-size: 28px;
-    margin-bottom: 15px;
-    text-shadow: 2px 2px 6px rgba(0,0,0,0.6);
-}
-
-/* Paragraphes */
-.event-section p {
-    font-size: 17px;
-    line-height: 1.6;
-    margin-bottom: 12px;
-}
-
-
-.event-list {
-    list-style: none;
-    padding-left: 0;
-}
-
-.event-list li {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    background: rgba(255, 255, 255, 0.08);
-    padding: 10px;
-    border-radius: 10px;
-    margin-bottom: 15px;
-}
-
-/* Images */
-.event-list img {
-    width: 90px;
-    border-radius: 8px;
-}
-
-/* Texte sous image */
-.event-list figcaption {
-    font-size: 16px;
-    line-height: 1.4;
-}
-
-@media (max-width: 700px) {
-
-    .event-list li {
-        flex-direction: column;
-        text-align: center;
-    }
-
-    .event-list img {
-        width: 70px;
-    }
-
-    .event-section h2 {
-        font-size: 24px;
-    }
-=======
->>>>>>> b093737 (Restauration finale et sécurisée de toutes les zones CSS)
-.formation-block.open .formation-header::after { 
-    content: "–"; 
-    transform: translateY(-50%) rotate(180deg); 
-}
-
-.formation-content { 
-    max-height: 0; 
-    overflow: hidden; 
-    padding: 0 20px; 
-    transition: max-height 0.4s ease, padding 0.3s ease; 
-    color: white; 
-}
-
-.formation-content.open { 
-    padding: 20px; 
-    max-height: 600px; 
-}
+.formations-container { display: flex; flex-direction: column; gap: 25px; margin-top: 40px; }
+.formation-block { background: rgba(0, 0, 0, 0.55); border-radius: 15px; backdrop-filter: blur(10px); box-shadow: 0 0 20px rgba(0,0,0,0.5); overflow: hidden; transition: 0.3s; cursor: pointer; }
+.highlight { border: 2px solid #4da6ff; box-shadow: 0 0 25px rgba(77,166,255,0.6); }
+.formation-header { padding: 20px; font-size: 26px; font-weight: 700; color: #4da6ff !important; background: rgba(0,0,0,0.65); text-shadow: 0 0 6px black; position: relative; padding-right: 40px; }
+.formation-header::after { content: "+"; position: absolute; right: 20px; top: 50%; transform: translateY(-50%); font-size: 26px; font-weight: 700; color: #4da6ff; transition: 0.3s ease; }
+.formation-block.open .formation-header::after { content: "–"; transform: translateY(-50%) rotate(180deg); }
+.formation-content { max-height: 0; overflow: hidden; padding: 0 20px; transition: max-height 0.4s ease, padding 0.3s ease; color: white; }
+.formation-content.open { padding: 20px; max-height: 600px; }
 
 
 /* ========================================================================== */
+/* */
+/* ZONE 3 : NATI (ÉQUIPE ENSEIGNANTE)                       */
+/* */
 /* ========================================================================== */
-/* ZONE 3 : NATI (ÉQUIPE ENSEIGNANTE)                      */
-/* ========================================================================== */
-/* ========================================================================== */
 
-.team-page-bg { 
-    background: linear-gradient(rgba(0,0,0,0.45), rgba(0,0,0,0.45)), url('image/campus-8421-Copie.jpg') center/cover no-repeat; 
-    padding: 70px 4% 90px; 
-    min-height: 100vh; 
-}
-
-.team-showcase { 
-    max-width: 1400px; 
-    margin: 0 auto; 
-}
-
-.team-header { 
-    text-align: center; 
-    margin-bottom: 45px; 
-}
-
-.team-header h1 { 
-    font-size: 48px; 
-    color: white; 
-    margin-bottom: 12px; 
-    font-weight: 700; 
-    text-shadow: 0 2px 8px rgba(0,0,0,0.25); 
-}
-
-.team-header p { 
-    font-size: 18px; 
-    color: white; 
-    max-width: 850px; 
-    margin: 0 auto; 
-    line-height: 1.6; 
-    text-shadow: 0 2px 8px rgba(0,0,0,0.25); 
-}
-
-.team-wrapper { 
-    position: relative; 
-    display: flex; 
-    align-items: center; 
-}
-
-.team-slider { 
-    display: flex; 
-    gap: 40px; 
-    overflow-x: hidden; 
-    scroll-behavior: smooth; 
-    width: 100%; 
-}
-
-.team-card { 
-    min-width: 780px; 
-    max-width: 780px; 
-    flex-shrink: 0; 
-    background: rgba(255, 255, 255, 0.96); 
-    border-radius: 36px; 
-    padding: 18px; 
-    box-shadow: 0 12px 35px rgba(0, 0, 0, 0.18); 
-}
-
-.team-image { 
-    position: relative; 
-    height: 500px; 
-    border-radius: 28px; 
-    overflow: hidden; 
-    background: #d9d9d9; 
-}
-
-.team-image img { 
-    width: 100%; 
-    height: 100%; 
-    object-fit: cover; 
-    display: block; 
-}
-
-.team-overlay { 
-    position: absolute; 
-    left: 45px; 
-    top: 50%; 
-    transform: translateY(-50%); 
-    max-width: 300px; 
-}
-
-.team-overlay h2 { 
-    color: white; 
-    font-size: 54px; 
-    line-height: 0.95; 
-    font-weight: 300; 
-    margin: 0; 
-    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.35); 
-}
-
-.team-content { 
-    padding: 24px 8px 8px; 
-}
-
-.team-content h3 { 
-    font-size: 32px; 
-    color: #1f1f1f; 
-    margin-bottom: 12px; 
-    font-weight: 700; 
-}
-
-.team-content p { 
-    font-size: 18px; 
-    color: #4d4d4d; 
-    line-height: 1.6; 
-    max-width: 680px; 
-    margin: 0; 
-}
-
-.team-arrow { 
-    position: absolute; 
-    top: 50%; 
-    transform: translateY(-50%); 
-    z-index: 20; 
-    width: 58px; 
-    height: 58px; 
-    border: none; 
-    border-radius: 50%; 
-    background: rgba(255, 255, 255, 0.92); 
-    color: #1f1f1f; 
-    font-size: 28px; 
-    cursor: pointer; 
-    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.12); 
-    transition: 0.3s ease; 
-}
-
-.team-arrow:hover { 
-    background: #0077b6; 
-    color: white; 
-}
-
-.team-arrow-left { left: 15px; } 
-.team-arrow-right { right: 15px; }
+.team-page-bg { background: linear-gradient(rgba(0,0,0,0.45), rgba(0,0,0,0.45)), url('image/campus-8421-Copie.jpg') center/cover no-repeat; padding: 70px 4% 90px; min-height: 100vh; }
+.team-showcase { max-width: 1400px; margin: 0 auto; }
+.team-header { text-align: center; margin-bottom: 45px; }
+.team-header h1 { font-size: 48px; color: white; margin-bottom: 12px; font-weight: 700; text-shadow: 0 2px 8px rgba(0,0,0,0.25); }
+.team-header p { font-size: 18px; color: white; max-width: 850px; margin: 0 auto; line-height: 1.6; text-shadow: 0 2px 8px rgba(0,0,0,0.25); }
+.team-wrapper { position: relative; display: flex; align-items: center; }
+.team-slider { display: flex; gap: 40px; overflow-x: hidden; scroll-behavior: smooth; width: 100%; }
+.team-card { min-width: 780px; max-width: 780px; flex-shrink: 0; background: rgba(255, 255, 255, 0.96); border-radius: 36px; padding: 18px; box-shadow: 0 12px 35px rgba(0, 0, 0, 0.18); }
+.team-image { position: relative; height: 500px; border-radius: 28px; overflow: hidden; background: #d9d9d9; }
+.team-image img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.team-overlay { position: absolute; left: 45px; top: 50%; transform: translateY(-50%); max-width: 300px; }
+.team-overlay h2 { color: white; font-size: 54px; line-height: 0.95; font-weight: 300; margin: 0; text-shadow: 0 2px 10px rgba(0, 0, 0, 0.35); }
+.team-content { padding: 24px 8px 8px; }
+.team-content h3 { font-size: 32px; color: #1f1f1f; margin-bottom: 12px; font-weight: 700; }
+.team-content p { font-size: 18px; color: #4d4d4d; line-height: 1.6; max-width: 680px; margin: 0; }
+.team-arrow { position: absolute; top: 50%; transform: translateY(-50%); z-index: 20; width: 58px; height: 58px; border: none; border-radius: 50%; background: rgba(255, 255, 255, 0.92); color: #1f1f1f; font-size: 28px; cursor: pointer; box-shadow: 0 6px 20px rgba(0, 0, 0, 0.12); transition: 0.3s ease; }
+.team-arrow:hover { background: #0077b6; color: white; }
+.team-arrow-left { left: 15px; } .team-arrow-right { right: 15px; }
 
 
 /* ========================================================================== */
+/* */
+/* ZONE 4 : ALEXANDRE (ÉVÈNEMENTS)                      */
+/* */
 /* ========================================================================== */
-/* ZONE 4 : ALEXANDRE (ÉVÈNEMENTS)                         */
-/* ========================================================================== */
-/* ========================================================================== */
 
-.evenement-container {
-    max-width: 1000px;
-    margin: 0 auto;
-    padding: 40px 20px;
-    color: white;
-}
-
-.event-section {
-    background: rgba(0, 0, 0, 0.35);
-    padding: 20px;
-    border-radius: 12px;
-    margin-bottom: 35px;
-}
-
-/* Titres */
-.event-section h2 {
-    font-size: 28px;
-    margin-bottom: 15px;
-    text-shadow: 2px 2px 6px rgba(0,0,0,0.6);
-}
-
-/* Paragraphes */
-.event-section p {
-    font-size: 17px;
-    line-height: 1.6;
-    margin-bottom: 12px;
-}
-
-.event-list {
-    list-style: none;
-    padding-left: 0;
-}
-
-.event-list li {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    background: rgba(255, 255, 255, 0.08);
-    padding: 10px;
-    border-radius: 10px;
-    margin-bottom: 15px;
-}
-
-/* Images */
-.event-list img {
-    width: 90px;
-    border-radius: 8px;
-}
-
-/* Texte sous image */
-.event-list figcaption {
-    font-size: 16px;
-    line-height: 1.4;
-}
+.evenement-container { max-width: 1000px; margin: 0 auto; padding: 40px 20px; color: white; }
+.event-section { background: rgba(0, 0, 0, 0.35); padding: 20px; border-radius: 12px; margin-bottom: 35px; }
+.event-section h2 { font-size: 28px; margin-bottom: 15px; text-shadow: 2px 2px 6px rgba(0,0,0,0.6); }
+.event-section p { font-size: 17px; line-height: 1.6; margin-bottom: 12px; }
+.event-list { list-style: none; padding-left: 0; }
+.event-list li { display: flex; align-items: center; gap: 12px; background: rgba(255, 255, 255, 0.08); padding: 10px; border-radius: 10px; margin-bottom: 15px; }
+.event-list img { width: 90px; border-radius: 8px; }
+.event-list figcaption { font-size: 16px; line-height: 1.4; }
 
 
 /* ========================================================================== */
-/* ========================================================================== */
-/* RESPONSIVE GLOBAL (MOBILES)                             */
-/* ========================================================================== */
+/* */
+/* ZONE 5 : RESPONSIVE GLOBAL (MOBILES)                   */
+/* */
 /* ========================================================================== */
 
 @media screen and (max-width: 900px) {
-    /* Équipe */
+    /* Équipe (Nati) */
     .team-card { min-width: 100%; max-width: 100%; padding: 14px; }
     .team-image { height: 360px; }
     .team-overlay { left: 25px; max-width: 220px; }
@@ -597,15 +181,14 @@ body::before {
     .team-content p { font-size: 16px; }
     .team-arrow { width: 48px; height: 48px; font-size: 22px; }
     
-    /* Accueil */
-    #contenu-accueil { border-radius: 0; }
+    /* Accueil (Kevin) */
+    #contenu-accueil, #cadre-blanc { border-radius: 0; }
     .testimonial-card { flex: 0 0 calc(50% - 15px); }
-    .prev-arrow { left: 10px; } 
-    .next-arrow { right: 10px; }
+    .prev-arrow { left: 10px; } .next-arrow { right: 10px; }
 }
 
 @media (max-width: 700px) {
-    /* Évènements */
+    /* Évènements (Alexandre) */
     .event-list li { flex-direction: column; text-align: center; }
     .event-list img { width: 70px; }
     .event-section h2 { font-size: 24px; }
