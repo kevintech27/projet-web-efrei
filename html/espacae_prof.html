@@ -3,54 +3,72 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Espace Professeur</title>
+    <title>Espace Professeur - EFREI</title>
     <link rel="stylesheet" href="../css/style.css">
 </head>
+<body style="margin: 0; font-family: 'Roboto', Arial, sans-serif;">
 
-<body>
+<nav class="navbar" style="background-color: #004d99; box-shadow: 0 4px 15px rgba(0,0,0,0.5); position: fixed; top: 0; left: 0; width: 100%; z-index: 1000; display: flex; align-items: center; justify-content: space-between; padding: 20px 50px; box-sizing: border-box;">
+    <img src="../image/Logo_Efrei_2022.svg.png" alt="Logo Efrei" style="width: 170px; height: auto;">
+    <ul class="menu" style="display: flex; gap: 40px; list-style: none; margin: 0; padding: 0;">
+        <li><a href="../index.php" style="color: white; text-decoration: none; font-size: 22px; font-weight: 600;">Accueil</a></li>
+        <li><a href="../cours.php" style="color: white; text-decoration: none; font-size: 22px; font-weight: 600;">Cours & Formation</a></li>
+        <li><a href="../equipe.php" style="color: white; text-decoration: none; font-size: 22px; font-weight: 600;">Équipe enseignante</a></li>
+        <li><a href="../evenement.php" style="color: white; text-decoration: none; font-size: 22px; font-weight: 600;">Évènement</a></li>
+        <li><a href="../contact.php" style="color: white; text-decoration: none; font-size: 22px; font-weight: 600;">Contact</a></li>
+    </ul>
+</nav>
 
-<?php include("../includes/header.php"); ?>
-
-<div class="mainarea">
-    <div class="page-container">
-
-        <h1 class="hero-title">Espace Professeur</h1>
+<main style="padding-top: 150px; min-height: 100vh; background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.8)), url('../image/campus-8421-Copie.jpg') center/cover fixed; color: white; padding-bottom: 80px; box-sizing: border-box;">
+    <div style="max-width: 900px; margin: 0 auto; padding: 0 20px;">
+        
+        <h1 style="font-size: 3rem; text-align: center; margin-bottom: 40px; text-shadow: 2px 2px 10px rgba(0,0,0,0.5);">Espace Professeur</h1>
 
         <section class="formations-container">
-
-            <!-- Créer une permanence -->
-            <div class="formation-block highlight">
+            <div class="formation-block">
                 <div class="formation-header">Créer une permanence</div>
                 <div class="formation-content">
-                    <form action="../create_permanence.php" method="POST">
-                        <label>Matière :</label>
-                        <input type="text" name="matiere" required>
+                    <form action="../create_permanence.php" method="POST" style="display: flex; flex-direction: column; padding-top: 15px;">
+                        <label style="font-weight: bold; margin-bottom: 5px;">Matière :</label>
+                        <input type="text" name="matiere" required style="width: 100%; padding: 10px; margin-bottom: 15px; border-radius: 5px; border: none; font-family: 'Roboto', sans-serif;">
 
-                        <label>Date :</label>
-                        <input type="date" name="date" required>
+                        <label style="font-weight: bold; margin-bottom: 5px;">Date :</label>
+                        <input type="date" name="date" required style="width: 100%; padding: 10px; margin-bottom: 15px; border-radius: 5px; border: none; font-family: 'Roboto', sans-serif;">
 
-                        <label>Heure :</label>
-                        <input type="time" name="heure" required>
+                        <label style="font-weight: bold; margin-bottom: 5px;">Heure :</label>
+                        <input type="time" name="heure" required style="width: 100%; padding: 10px; margin-bottom: 20px; border-radius: 5px; border: none; font-family: 'Roboto', sans-serif;">
 
-                        <button type="submit">Créer</button>
+                        <button type="submit" style="padding: 12px; background: #4da6ff; color: #002244; border: none; border-radius: 5px; font-weight: bold; font-size: 1.1rem; cursor: pointer;">Créer la permanence</button>
                     </form>
                 </div>
             </div>
 
-            <!-- Permanences créées -->
             <div class="formation-block">
-                <div class="formation-header">Permanences créées</div>
-                <div class="formation-content" id="permanences-prof"></div>
+                <div class="formation-header">Mes permanences créées</div>
+                <div class="formation-content" id="permanences-prof" style="padding-top: 15px;">
+                    <p style="font-style: italic; opacity: 0.8;">Aucune permanence créée pour le moment.</p>
+                </div>
             </div>
-
         </section>
 
     </div>
-</div>
+</main>
 
-<script src="../js/main.js"></script>
-
-<?php include("../includes/footer.php"); ?>
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+    const blocks = document.querySelectorAll('.formation-block');
+    blocks.forEach(block => {
+        block.addEventListener('click', (e) => {
+            // Sécurité pour pouvoir écrire dans le formulaire sans que l'accordéon se ferme
+            if (e.target.tagName === 'INPUT' || e.target.tagName === 'BUTTON') return;
+            
+            block.classList.toggle('open');
+            const content = block.querySelector('.formation-content');
+            content.classList.toggle('open');
+        });
+    });
+});
+</script>
 
 </body>
 </html>

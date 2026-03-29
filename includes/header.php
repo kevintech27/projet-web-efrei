@@ -16,8 +16,9 @@
             <li><a href="index.php">Accueil</a></li>
             <li><a href="cours.php">Cours & Formation</a></li>
             <li><a href="equipe.php">Équipe enseignante</a></li>
-            <li><a href="contact.php">À propos / Contact</a></li>
             <li><a href="evenement.php">Évènement</a></li>
+            <li><a href="contact.php">Contact</a></li>
+            <li><a href="html/permanence.html" style="background-color: #4da6ff; padding: 8px 15px; border-radius: 5px; color: #002244;">Permanences</a></li>
         </ul>
     </nav>
 </header>
