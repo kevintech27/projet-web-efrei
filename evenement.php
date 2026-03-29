@@ -1,9 +1,10 @@
 <?php
 $page = "evenement";
 ?>
-<?php include 'includes/header.php'; ?> 
-
-  <main class="container">
+<?php include 'includes/header.php'; ?>
+<body>
+  <h1 class="titre-evenement"> Évènements & Vie étudiante </h1>
+  <main class="evenement-container">
     <section class="installations">
       <h2>Campus et infrastructures informatique</h2>
       <p>Le campus de Villejuif offre des laboratoires informatiques modernes, des espaces de coworking, des salles de projet et des ressources numériques accessibles aux étudiants.</p>
@@ -106,5 +107,6 @@ $page = "evenement";
       </ul>
     </section>
   </main>
-
+</body>
+  <script src="animations.js"></script>
   <?php include 'includes/footer.php'; ?>

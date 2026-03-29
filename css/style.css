@@ -1,97 +1,25 @@
 /* ========================================================================== */
-/* */
 /* ZONE 1 : KEVIN (GLOBAL, ACCUEIL & CONTACT)                 */
-/* */
 /* ========================================================================== */
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html, body { overflow-x: hidden; font-family: 'Roboto', Arial, sans-serif; }
+body { margin: 0; min-height: 100vh; background-image: url("image/campus-8421-Copie.jpg"); background-size: cover; background-position: center; background-attachment: fixed; background-repeat: no-repeat; }
+body::before { content: ""; position: fixed; inset: 0; background: rgba(0, 0, 0, 0.45); z-index: -2; }
 
-/* --- RESET GLOBAL --- */
-* { 
-    margin: 0; 
-    padding: 0; 
-    box-sizing: border-box; 
-}
-
-html, body { 
-    overflow-x: hidden; 
-    font-family: 'Roboto', Arial, sans-serif; 
-}
-
-/* --- FOND DU SITE --- */
-body { 
-    margin: 0; 
-    min-height: 100vh; 
-    background-image: url("image/campus-8421-Copie.jpg"); 
-    background-size: cover; 
-    background-position: center; 
-    background-attachment: fixed; 
-    background-repeat: no-repeat; 
-}
-
-/* Le voile noir sur l'image de fond */
-body::before { 
-    content: ""; 
-    position: fixed; 
-    inset: 0; 
-    background: rgba(0, 0, 0, 0.45); 
-    z-index: -2; 
-}
-
-/* --- NAVBAR (HEADER) --- */
 /* --- NAVBAR (HEADER) INTELLIGENTE --- */
-.navbar { 
-    display: flex; 
-    align-items: center; 
-    justify-content: space-between; 
-    padding: 20px 50px; 
-    background: rgba(0, 0, 0, 0.25); 
-    backdrop-filter: blur(6px); 
-    
-    /* MODIFICATIONS ICI : Fixed pour suivre le scroll */
-    position: fixed; 
-    top: 0; left: 0; width: 100%;
-    z-index: 1000; /* Toujours tout au-dessus */
-    transition: transform 0.4s ease, background-color 0.4s ease, box-shadow 0.4s ease;
-}
-
-.navbar.scrolled {
-    background-color: #004d99 !important;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.5);
-}
-
-/* La classe ajoutée par le JS pour cacher la barre */
-.navbar-hidden {
-    transform: translateY(-100%);
-}
-
+.navbar { display: flex; align-items: center; justify-content: space-between; padding: 20px 50px; background: rgba(0, 0, 0, 0.25); backdrop-filter: blur(6px); position: fixed; top: 0; left: 0; width: 100%; z-index: 1000; transition: transform 0.4s ease, background-color 0.4s ease, box-shadow 0.4s ease; }
+.navbar.scrolled { background-color: #004d99 !important; box-shadow: 0 4px 15px rgba(0,0,0,0.5); }
+.navbar-hidden { transform: translateY(-100%); }
 .logo-img { width: 170px; height: auto; }
 .menu { display: flex; gap: 40px; list-style: none; margin: 0; padding: 0;}
 .menu a { color: white; text-decoration: none; font-size: 22px; font-weight: 600; text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.8); transition: 0.3s; }
 .menu a:hover { color: #4da6ff; transform: scale(1.05); }
 
 /* --- ACCUEIL : ANIMATIONS & HOOK 3D --- */
-/* Z-index passé à 1 pour activer la souris sur l'objet 3D Spline ! */
-#hero-container, #hero-fixed { 
-    position: fixed; 
-    top: 0; left: 0; width: 100%; height: 100vh; 
-    z-index: 1; 
-}
-
-/* Le cadre qui monte par-dessus la 3D (Z-index 10) */
-#contenu-accueil, #cadre-blanc { 
-    margin-top: 100vh; 
-    background-color: white; 
-    position: relative; 
-    z-index: 10; 
-    padding: 80px 20px 150px; 
-    box-shadow: 0 -20px 50px rgba(0,0,0,0.3); 
-    transform-origin: top center; 
-    transform: scale(0.8); 
-    border-radius: 40px 40px 0 0; 
-}
-
+#hero-container, #hero-fixed { position: fixed; top: 0; left: 0; width: 100%; height: 100vh; z-index: 1; }
+#contenu-accueil, #cadre-blanc { margin-top: 100vh; background-color: white; position: relative; z-index: 10; padding: 80px 20px 150px; box-shadow: 0 -20px 50px rgba(0,0,0,0.3); transform-origin: top center; transform: scale(0.8); border-radius: 40px 40px 0 0; }
 .blinking-cursor { font-weight: 800; color: #ffffff; animation: blink 1s step-end infinite; }
 @keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0; } }
-
 .reveal-element { opacity: 0; transform: translateY(40px) scale(0.9); transition: opacity 0.8s ease-out, transform 0.8s cubic-bezier(0.16, 1, 0.3, 1); }
 .reveal-element.active { opacity: 1; transform: translateY(0) scale(1); }
 .stat-card { transition: transform 0.3s ease; }
@@ -106,13 +34,9 @@ body::before {
 .slider-arrow:hover { background-color: #002244; transform: translateY(-50%) scale(1.1); }
 .prev-arrow { left: -25px; } .next-arrow { right: -25px; }
 
-
 /* ========================================================================== */
-/* */
 /* ZONE 2 : AMIR (COURS & FORMATIONS)                       */
-/* */
 /* ========================================================================== */
-
 .formations-container { display: flex; flex-direction: column; gap: 25px; margin-top: 40px; }
 .formation-block { background: rgba(0, 0, 0, 0.55); border-radius: 15px; backdrop-filter: blur(10px); box-shadow: 0 0 20px rgba(0,0,0,0.5); overflow: hidden; transition: 0.3s; cursor: pointer; }
 .highlight { border: 2px solid #4da6ff; box-shadow: 0 0 25px rgba(77,166,255,0.6); }
@@ -122,13 +46,9 @@ body::before {
 .formation-content { max-height: 0; overflow: hidden; padding: 0 20px; transition: max-height 0.4s ease, padding 0.3s ease; color: white; }
 .formation-content.open { padding: 20px; max-height: 600px; }
 
-
 /* ========================================================================== */
-/* */
 /* ZONE 3 : NATI (ÉQUIPE ENSEIGNANTE)                       */
-/* */
 /* ========================================================================== */
-
 .team-page-bg { background: linear-gradient(rgba(0,0,0,0.45), rgba(0,0,0,0.45)), url('image/campus-8421-Copie.jpg') center/cover no-repeat; padding: 70px 4% 90px; min-height: 100vh; }
 .team-showcase { max-width: 1400px; margin: 0 auto; }
 .team-header { text-align: center; margin-bottom: 45px; }
@@ -148,29 +68,25 @@ body::before {
 .team-arrow:hover { background: #0077b6; color: white; }
 .team-arrow-left { left: 15px; } .team-arrow-right { right: 15px; }
 
+/* ========================================================================== */
+/* ZONE 4 : ALEXANDRE (ÉVÈNEMENTS)                       */
+/* ========================================================================== */
+.titre-evenement { text-align: center; font-size: 42px; color: white; margin-top: 40px; margin-bottom: 30px; text-shadow: 2px 2px 8px rgba(0,0,0,0.7); font-weight: 700; }
+.evenement-container { max-width: 1100px; margin: 0 auto; padding: 20px; color: white; }
+.installations, .associations, .projets { background: rgba(0, 0, 0, 0.35); padding: 20px; border-radius: 12px; margin-bottom: 30px; }
+.installations h2, .associations h2, .projets h2 { font-size: 26px; margin-bottom: 12px; text-shadow: 2px 2px 6px rgba(0,0,0,0.6); }
+.installations p, .associations p, .projets p { font-size: 16px; line-height: 1.6; margin-bottom: 10px; }
+.galerie-campus, .liste-assos, .liste-projets { list-style: none; padding-left: 0; }
+.galerie-campus li, .liste-assos li, .liste-projets li { display: flex; align-items: center; gap: 12px; background: rgba(255, 255, 255, 0.08); padding: 10px; border-radius: 10px; margin-bottom: 12px; }
+.galerie-campus img, .liste-assos img, .liste-projets img { border-radius: 8px; box-shadow: 0 3px 8px rgba(0,0,0,0.4); }
+.galerie-campus img { width: 110px; }
+.liste-assos img, .liste-projets img { width: 60px; }
+figure { display: flex; align-items: center; gap: 12px; margin: 0; }
+figcaption { font-size: 15px; line-height: 1.4; color: white; }
 
 /* ========================================================================== */
-/* */
-/* ZONE 4 : ALEXANDRE (ÉVÈNEMENTS)                      */
-/* */
-/* ========================================================================== */
-
-.evenement-container { max-width: 1000px; margin: 0 auto; padding: 40px 20px; color: white; }
-.event-section { background: rgba(0, 0, 0, 0.35); padding: 20px; border-radius: 12px; margin-bottom: 35px; }
-.event-section h2 { font-size: 28px; margin-bottom: 15px; text-shadow: 2px 2px 6px rgba(0,0,0,0.6); }
-.event-section p { font-size: 17px; line-height: 1.6; margin-bottom: 12px; }
-.event-list { list-style: none; padding-left: 0; }
-.event-list li { display: flex; align-items: center; gap: 12px; background: rgba(255, 255, 255, 0.08); padding: 10px; border-radius: 10px; margin-bottom: 15px; }
-.event-list img { width: 90px; border-radius: 8px; }
-.event-list figcaption { font-size: 16px; line-height: 1.4; }
-
-
-/* ========================================================================== */
-/* */
 /* ZONE 5 : RESPONSIVE GLOBAL (MOBILES)                   */
-/* */
 /* ========================================================================== */
-
 @media screen and (max-width: 900px) {
     /* Équipe (Nati) */
     .team-card { min-width: 100%; max-width: 100%; padding: 14px; }
@@ -187,11 +103,12 @@ body::before {
     .prev-arrow { left: 10px; } .next-arrow { right: 10px; }
 }
 
-@media (max-width: 700px) {
+@media (max-width: 800px) {
     /* Évènements (Alexandre) */
-    .event-list li { flex-direction: column; text-align: center; }
-    .event-list img { width: 70px; }
-    .event-section h2 { font-size: 24px; }
+    .titre-evenement { font-size: 32px; margin-top: 30px; }
+    .galerie-campus li, .liste-assos li, .liste-projets li { flex-direction: column; text-align: center; }
+    .galerie-campus img, .liste-assos img, .liste-projets img { width: 70px; }
+    figcaption { font-size: 14px; }
 }
 
 @media (max-width: 600px) {
