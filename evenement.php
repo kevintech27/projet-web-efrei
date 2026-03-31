@@ -14,7 +14,7 @@ require_once('includes/header.php');
 
         <li>
           <figure>
-            <img src="https://tse2.mm.bing.net/th/id/OIP.g8hUyIQebqXKMeZvo8BYPQHaER?pid=Api&P=0&h=180"
+            <img src="campusmaison.jpeg"
                  alt="Campus principal de l'Efrei : La Maison" width="120">
             <figcaption>Campus principal de l'Efrei : La Maison</figcaption>
           </figure>
@@ -22,7 +22,7 @@ require_once('includes/header.php');
 
         <li>
           <figure>
-            <img src="https://tse4.mm.bing.net/th/id/OIP.kgct9Pw-2GId8VWe5PWiHQHaE5?pid=Api&P=0&h=180"
+            <img src="laboratoires.jpeg"
                  alt="Laboratoires Innovation Labs" width="120">
             <figcaption>Laboratoires Innovation Labs pour projets 3D, maquettes et prototypes</figcaption>
           </figure>
@@ -30,7 +30,7 @@ require_once('includes/header.php');
 
         <li>
           <figure>
-            <img src="https://tse4.mm.bing.net/th/id/OIP.XE0oy6RXQ6kKRdCh6NvMkQHaEK?pid=Api&P=0&h=180"
+            <img src="newrepublic.jpeg"
                  alt="Bâtiment New Republic" width="120">
             <figcaption>Nouveau bâtiment New Republic (rentrée 2026)</figcaption>
           </figure>
@@ -38,7 +38,7 @@ require_once('includes/header.php');
 
         <li>
           <figure>
-            <img src="https://tse2.mm.bing.net/th/id/OIP.uxdDDfupO05QdIMjigRX2wHaEK?pid=Api&P=0&h=180"
+            <img src="sallecours.jpeg"
                  alt="Salle de cours moderne à l'Efrei" width="120">
             <figcaption>Salle de cours type équipée pour étudiants et enseignants</figcaption>
           </figure>
@@ -56,7 +56,7 @@ require_once('includes/header.php');
 
         <li>
           <figure>
-            <img src="https://tse2.mm.bing.net/th/id/OIP.MQxYBjL_pVT02ABHaJYLEwAAAA?pid=Api&P=0&h=180"
+            <img src="logoonepantheon.jpeg"
                  alt="Logo One Panthéon" width="50">
             <figcaption>Association de projets en développement informatique : One Panthéon</figcaption>
           </figure>
@@ -64,7 +64,7 @@ require_once('includes/header.php');
 
         <li>
           <figure>
-            <img src="https://tse2.mm.bing.net/th/id/OIP.uvpVTGubyeYDHBrpnbjI_AHaHa?pid=Api&P=0&h=180"
+            <img src="logoice.jpeg"
                  alt="Logo ICE" width="50">
             <figcaption>Association d’innovation et conception : ICE</figcaption>
           </figure>
@@ -72,7 +72,7 @@ require_once('includes/header.php');
 
         <li>
           <figure>
-            <img src="https://tse3.mm.bing.net/th/id/OIP.TbUkUFsAqnxtPwvdzZDcaQHaHa?pid=Api&P=0&h=180"
+            <img src="logo4esport.jpeg"
                  alt="Logo 4eSport" width="50">
             <figcaption>Association d’e-sport : 4eSport</figcaption>
           </figure>
@@ -88,7 +88,7 @@ require_once('includes/header.php');
       <ul class="liste-projets">
         <li>
           <figure>
-            <img src="https://tse4.mm.bing.net/th/id/OIP.FF0l01EJyeCrk8a-_mZkfQHaFj?pid=Api&P=0&h=180"
+            <img src="deficyber.jpeg"
                  alt="Défi Cyber" width="50">
             <figcaption>
               Challenge Cybersécurité : Hackathon intensif où les étudiants travaillent en équipe pendant 24 à 48h pour résoudre un problème informatique.
@@ -97,7 +97,7 @@ require_once('includes/header.php');
         </li>
         <li>
           <figure>
-            <img src="https://tse4.mm.bing.net/th/id/OIP.IgH5IAI9e788tuw5MQebjgHaE7?pid=Api&P=0&h=180"
+            <img src="techday.jpeg"
                  alt="Tech Day 2024" width="50">
             <figcaption>
               Tech Day 2024 : 7 projets ingénieurs pour révolutionner le monde, transformer la créativité en innovation technologique
