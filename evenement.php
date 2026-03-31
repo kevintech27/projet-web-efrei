@@ -1,7 +1,7 @@
 <?php
-$page = "evenement";
+$pageTitle = "Evenement et Vie étudiante - EFREI";
+require_once('includes/header.php');
 ?>
-<?php include 'includes/header.php'; ?>
 <body>
   <h1 class="titre-evenement"> Évènements & Vie étudiante </h1>
   <main class="evenement-container">
@@ -109,4 +109,4 @@ $page = "evenement";
   </main>
 </body>
   <script src="animations.js"></script>
-  <?php include 'includes/footer.php'; ?>
+<?php require_once('includes/footer.php'); ?>
