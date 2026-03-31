@@ -101,7 +101,12 @@ body::before { content: ""; position: fixed; inset: 0; background: rgba(0, 0, 0,
 .liste-assos img, .liste-projets img { width: 60px; }
 figure { display: flex; align-items: center; gap: 12px; margin: 0; }
 figcaption { font-size: 15px; line-height: 1.4; color: white; }
-
+.installations,
+.associations,
+.projets {opacity: 0; transform: translateY(30px); transition: opacity 0.8s ease, transform 0.8s ease;}
+.installations.visible,
+.associations.visible,
+.projets.visible {opacity: 1; transform: translateY(0);}
 /* ========================================================================== */
 /* ZONE 5 : RESPONSIVE GLOBAL (MOBILES)                   */
 /* ========================================================================== */

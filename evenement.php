@@ -108,5 +108,47 @@ require_once('includes/header.php');
     </section>
   </main>
 </body>
-  <script src="animations.js"></script>
+  <script>
+document.addEventListener("DOMContentLoaded", () => {
+
+    const titre = document.querySelector(".titre-evenement");
+    titre.style.opacity = "0";
+    titre.style.transform = "translateY(-20px)";
+    titre.style.transition = "opacity 0.8s ease, transform 0.8s ease";
+
+    setTimeout(() => {
+        titre.style.opacity = "1";
+        titre.style.transform = "translateY(0)";
+    }, 200);
+
+
+    const sections = document.querySelectorAll(".installations, .associations, .projets");
+
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add("visible");
+            }
+        });
+    }, { threshold: 0.2 });
+
+    sections.forEach(section => observer.observe(section));
+
+
+    const cards = document.querySelectorAll(".galerie-campus li, .liste-assos li, .liste-projets li");
+
+    cards.forEach(card => {
+        card.addEventListener("mouseenter", () => {
+            card.style.transform = "scale(1.03)";
+            card.style.transition = "0.3s";
+        });
+
+        card.addEventListener("mouseleave", () => {
+            card.style.transform = "scale(1)";
+        });
+    });
+
+});
+</script>
+
 <?php require_once('includes/footer.php'); ?>
