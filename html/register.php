@@ -1,20 +1,38 @@
 <?php
-// Initialisation du message de succès
+// On inclut la connexion à la base
+require_once('../includes/db.php');
+
 $message_succes = "";
 
-// Traitement du formulaire lors de la soumission
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $email = filter_var(trim($_POST['email']), FILTER_SANITIZE_EMAIL);
-    $password = htmlspecialchars(trim($_POST['password']));
+    $password = $_POST['password'];
 
     if (!empty($email) && !empty($password)) {
-        // Dans un vrai site, ici on enregistrerait dans la base de données MySQL
-        $message_succes = "<div style='background-color: #d4edda; color: #155724; padding: 15px; border-radius: 8px; margin-bottom: 20px; border: 1px solid #c3e6cb;'>
-            ✅ Compte créé avec succès pour <strong>$email</strong> ! Vous pouvez maintenant vous connecter.
-        </div>";
+        // Sécurité : On hache le mot de passe avant de l'enregistrer
+        $hashed_password = password_hash($password, PASSWORD_DEFAULT);
+
+        try {
+            // Requête préparée pour éviter les failles SQL
+            $sql = "INSERT INTO utilisateurs (email, mot_de_passe) VALUES (:email, :mdp)";
+            $stmt = $conn->prepare($sql);
+            $stmt->execute([
+                'email' => $email,
+                'mdp' => $hashed_password
+            ]);
+
+            $message_succes = "<div style='background-color: #d4edda; color: #155724; padding: 15px; border-radius: 8px; margin-bottom: 20px; border: 1px solid #c3e6cb;'>
+                ✅ Compte créé avec succès dans la base de données ! Vous pouvez vous connecter.
+            </div>";
+        } catch(PDOException $e) {
+            $message_succes = "<div style='background-color: #f8d7da; color: #721c24; padding: 15px; border-radius: 8px; margin-bottom: 20px;'>
+                ❌ Erreur : Cet email est peut-être déjà utilisé.
+            </div>";
+        }
     }
 }
 ?>
+
 <!DOCTYPE html>
 <html lang="fr">
 <head>
