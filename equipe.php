@@ -61,9 +61,9 @@ $enseignants = [
             <div class="team-slider" id="teamSlider">
                 
                 <?php 
-                // =========================================================
-                // LA BOUCLE PHP : Fini le copier-coller du HTML !
-                // =========================================================
+                // ================
+                // LA BOUCLE PHP : 
+                // ================
                 foreach ($enseignants as $prof) { 
                 ?>
                     <article class="team-card">

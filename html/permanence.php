@@ -20,7 +20,7 @@
     </ul>
 </nav>
 
-<main style="padding-top: 150px; min-height: 100vh; background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.8)), url('../image/Efrei-JPO-campus-220817041113.jpg') center/cover fixed; color: white; padding-bottom: 80px; box-sizing: border-box;">
+<main style="padding-top: 150px; min-height: 100vh; background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.8)), url('../image/campus-8421-Copie.jpg') center/cover fixed; color: white; padding-bottom: 80px; box-sizing: border-box;">
     <div style="max-width: 900px; margin: 0 auto; text-align: center; padding: 0 20px;">
         
         <h1 style="font-size: 3rem; margin-bottom: 15px; text-shadow: 2px 2px 10px rgba(0,0,0,0.5);">Permanences EFREI Paris</h1>
@@ -28,12 +28,12 @@
 
         <div style="display: flex; justify-content: center; gap: 30px; flex-wrap: wrap;">
             
-            <a href="login.html?role=eleve" style="flex: 1; min-width: 250px; background: rgba(255,255,255,0.1); backdrop-filter: blur(10px); padding: 40px; border-radius: 15px; border: 1px solid rgba(255,255,255,0.2); text-decoration: none; color: white; transition: 0.3s;">
+            <a href="login.php?role=eleve" style="flex: 1; min-width: 250px; background: rgba(255,255,255,0.1); backdrop-filter: blur(10px); padding: 40px; border-radius: 15px; border: 1px solid rgba(255,255,255,0.2); text-decoration: none; color: white; transition: 0.3s;">
                 <h2 style="color: #4da6ff; margin-bottom: 15px;">Espace Élève</h2>
                 <p>Demander une permanence, voir les permanences disponibles et vos inscriptions.</p>
             </a>
 
-            <a href="login.html?role=prof" style="flex: 1; min-width: 250px; background: rgba(255,255,255,0.1); backdrop-filter: blur(10px); padding: 40px; border-radius: 15px; border: 1px solid rgba(255,255,255,0.2); text-decoration: none; color: white; transition: 0.3s;">
+            <a href="login.php?role=prof" style="flex: 1; min-width: 250px; background: rgba(255,255,255,0.1); backdrop-filter: blur(10px); padding: 40px; border-radius: 15px; border: 1px solid rgba(255,255,255,0.2); text-decoration: none; color: white; transition: 0.3s;">
                 <h2 style="color: #4da6ff; margin-bottom: 15px;">Espace Professeur</h2>
                 <p>Créer des permanences, gérer vos disponibilités et consulter les inscriptions.</p>
             </a>

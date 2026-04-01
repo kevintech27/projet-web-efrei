@@ -1,3 +1,14 @@
+<?php
+$message_succes = "";
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $matiere = htmlspecialchars(trim($_POST['matiere']));
+    if (!empty($matiere)) {
+        $message_succes = "<div style='background-color: #d4edda; color: #155724; padding: 15px; border-radius: 8px; margin-bottom: 20px; border: 1px solid #c3e6cb;'>
+            ✅ La permanence en <strong>$matiere</strong> a bien été créée ! (Simulation)
+        </div>";
+    }
+}
+?>
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -23,12 +34,14 @@
     <div style="max-width: 900px; margin: 0 auto; padding: 0 20px;">
         
         <h1 style="font-size: 3rem; text-align: center; margin-bottom: 40px; text-shadow: 2px 2px 10px rgba(0,0,0,0.5);">Espace Professeur</h1>
+        
+        <?php if (!empty($message_succes)) echo $message_succes; ?>
 
         <section class="formations-container">
             <div class="formation-block">
                 <div class="formation-header">Créer une permanence</div>
                 <div class="formation-content">
-                    <form action="../create_permanence.php" method="POST" style="display: flex; flex-direction: column; padding-top: 15px;">
+                    <form action="espace_prof.php" method="POST" style="display: flex; flex-direction: column; padding-top: 15px;">
                         <label style="font-weight: bold; margin-bottom: 5px;">Matière :</label>
                         <input type="text" name="matiere" required style="width: 100%; padding: 10px; margin-bottom: 15px; border-radius: 5px; border: none; font-family: 'Roboto', sans-serif;">
 
@@ -59,9 +72,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const blocks = document.querySelectorAll('.formation-block');
     blocks.forEach(block => {
         block.addEventListener('click', (e) => {
-            // Sécurité pour pouvoir écrire dans le formulaire sans que l'accordéon se ferme
             if (e.target.tagName === 'INPUT' || e.target.tagName === 'BUTTON') return;
-            
             block.classList.toggle('open');
             const content = block.querySelector('.formation-content');
             content.classList.toggle('open');
