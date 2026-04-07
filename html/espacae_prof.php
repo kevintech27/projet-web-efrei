@@ -1,13 +1,37 @@
 <?php
+require_once('../includes/db.php');
+
 $message_succes = "";
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $matiere = htmlspecialchars(trim($_POST['matiere']));
-    if (!empty($matiere)) {
-        $message_succes = "<div style='background-color: #d4edda; color: #155724; padding: 15px; border-radius: 8px; margin-bottom: 20px; border: 1px solid #c3e6cb;'>
-            ✅ La permanence en <strong>$matiere</strong> a bien été créée ! (Simulation)
-        </div>";
+    $date = $_POST['date'];
+    $heure = $_POST['heure'];
+
+    if (!empty($matiere) && !empty($date) && !empty($heure)) {
+        try {
+            // Requête SQL réelle pour insérer la permanence
+            $sql = "INSERT INTO permanences (matiere, date_perm, heure_perm) VALUES (:matiere, :date_p, :heure_p)";
+            $stmt = $conn->prepare($sql);
+            $stmt->execute([
+                'matiere' => $matiere,
+                'date_p' => $date,
+                'heure_p' => $heure
+            ]);
+
+            $message_succes = "<div style='background-color: #d4edda; color: #155724; padding: 15px; border-radius: 8px; margin-bottom: 20px; border: 1px solid #c3e6cb;'>
+                ✅ La permanence en <strong>$matiere</strong> a été enregistrée en base de données !
+            </div>";
+        } catch(PDOException $e) {
+            $message_succes = "<div style='background-color: #f8d7da; color: #721c24; padding: 15px; border-radius: 8px; margin-bottom: 20px;'>
+                ❌ Erreur lors de l'enregistrement : " . $e->getMessage() . "
+            </div>";
+        }
     }
 }
+
+// On récupère les permanences existantes
+$stmt = $conn->query("SELECT * FROM permanences ORDER BY date_perm DESC");
+$mes_perms = $stmt->fetchAll(PDO::FETCH_ASSOC);
 ?>
 <!DOCTYPE html>
 <html lang="fr">
@@ -56,12 +80,30 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 </div>
             </div>
 
-            <div class="formation-block">
-                <div class="formation-header">Mes permanences créées</div>
-                <div class="formation-content" id="permanences-prof" style="padding-top: 15px;">
-                    <p style="font-style: italic; opacity: 0.8;">Aucune permanence créée pour le moment.</p>
+                <div class="formation-content" id="permanences-prof" style="padding-top: 150px; padding-top: 15px;">
+                    <?php if (empty($mes_perms)): ?>
+                        <p style="font-style: italic; opacity: 0.8;">Aucune permanence créée pour le moment.</p>
+                    <?php else: ?>
+                        <table style="width: 100%; border-collapse: collapse; color: white;">
+                            <thead>
+                                <tr style="border-bottom: 1px solid rgba(255,255,255,0.2);">
+                                    <th style="padding: 10px; text-align: left;">Matière</th>
+                                    <th style="padding: 10px; text-align: left;">Date</th>
+                                    <th style="padding: 10px; text-align: left;">Heure</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <?php foreach($mes_perms as $p): ?>
+                                    <tr style="border-bottom: 1px solid rgba(255,255,255,0.1);">
+                                        <td style="padding: 10px;"><?php echo htmlspecialchars($p['matiere']); ?></td>
+                                        <td style="padding: 10px;"><?php echo htmlspecialchars($p['date_perm']); ?></td>
+                                        <td style="padding: 10px;"><?php echo htmlspecialchars($p['heure_perm']); ?></td>
+                                    </tr>
+                                <?php endforeach; ?>
+                            </tbody>
+                        </table>
+                    <?php endif; ?>
                 </div>
-            </div>
         </section>
 
     </div>

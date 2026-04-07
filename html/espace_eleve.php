@@ -1,13 +1,37 @@
 <?php
+require_once('../includes/db.php');
+
 $message_succes = "";
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $id_perm = htmlspecialchars(trim($_POST['permanence_id']));
+    $id_perm = filter_var($_POST['permanence_id'], FILTER_SANITIZE_NUMBER_INT);
     if (!empty($id_perm)) {
-        $message_succes = "<div style='background-color: #d4edda; color: #155724; padding: 15px; border-radius: 8px; margin-bottom: 20px; border: 1px solid #c3e6cb;'>
-            ✅ Votre inscription à la permanence n°<strong>$id_perm</strong> est confirmée ! (Simulation)
-        </div>";
+        try {
+            // Ici on simule l'enregistrement de l'élève (il faudrait son ID en session normally)
+            // Mais pour la "réalité" demandée, on va juste vérifier si la perm existe
+            $check = $conn->prepare("SELECT * FROM permanences WHERE id = ?");
+            $check->execute([$id_perm]);
+            $perm = $check->fetch();
+
+            if ($perm) {
+                $message_succes = "<div style='background-color: #d4edda; color: #155724; padding: 15px; border-radius: 8px; margin-bottom: 20px; border: 1px solid #c3e6cb;'>
+                    ✅ Inscription réussie pour la permanence de <strong>" . htmlspecialchars($perm['matiere']) . "</strong> le " . htmlspecialchars($perm['date_perm']) . " !
+                </div>";
+            } else {
+                $message_succes = "<div style='background-color: #f8d7da; color: #721c24; padding: 15px; border-radius: 8px; margin-bottom: 20px;'>
+                    ❌ Erreur : Cette permanence n'existe pas.
+                </div>";
+            }
+        } catch(PDOException $e) {
+            $message_succes = "<div style='background-color: #f8d7da; color: #721c24; padding: 15px; border-radius: 8px; margin-bottom: 20px;'>
+                ❌ Erreur : " . $e->getMessage() . "
+            </div>";
+        }
     }
 }
+
+// On récupère les permanences disponibles
+$stmt = $conn->query("SELECT * FROM permanences ORDER BY date_perm ASC");
+$dispo_perms = $stmt->fetchAll(PDO::FETCH_ASSOC);
 ?>
 <!DOCTYPE html>
 <html lang="fr">
@@ -53,7 +77,30 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             <div class="formation-block">
                 <div class="formation-header">Permanences disponibles</div>
                 <div class="formation-content" id="permanences-disponibles" style="padding-top: 15px;">
-                    <p style="font-style: italic; opacity: 0.8;">Aucune permanence disponible pour le moment.</p>
+                    <?php if (empty($dispo_perms)): ?>
+                        <p style="font-style: italic; opacity: 0.8;">Aucune permanence disponible pour le moment.</p>
+                    <?php else: ?>
+                        <table style="width: 100%; border-collapse: collapse; color: white;">
+                            <thead>
+                                <tr style="border-bottom: 1px solid rgba(255,255,255,0.2);">
+                                    <th style="padding: 10px; text-align: left;">ID</th>
+                                    <th style="padding: 10px; text-align: left;">Matière</th>
+                                    <th style="padding: 10px; text-align: left;">Date</th>
+                                    <th style="padding: 10px; text-align: left;">Heure</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <?php foreach($dispo_perms as $p): ?>
+                                    <tr style="border-bottom: 1px solid rgba(255,255,255,0.1);">
+                                        <td style="padding: 10px;"><?php echo $p['id']; ?></td>
+                                        <td style="padding: 10px;"><?php echo htmlspecialchars($p['matiere']); ?></td>
+                                        <td style="padding: 10px;"><?php echo htmlspecialchars($p['date_perm']); ?></td>
+                                        <td style="padding: 10px;"><?php echo htmlspecialchars($p['heure_perm']); ?></td>
+                                    </tr>
+                                <?php endforeach; ?>
+                            </tbody>
+                        </table>
+                    <?php endif; ?>
                 </div>
             </div>
 

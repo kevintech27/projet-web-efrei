@@ -7,27 +7,34 @@ $message_succes = "";
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $email = filter_var(trim($_POST['email']), FILTER_SANITIZE_EMAIL);
     $password = $_POST['password'];
+    $confirm_password = $_POST['confirm_password'];
 
     if (!empty($email) && !empty($password)) {
-        // Sécurité : On hache le mot de passe avant de l'enregistrer
-        $hashed_password = password_hash($password, PASSWORD_DEFAULT);
-
-        try {
-            // Requête préparée pour éviter les failles SQL
-            $sql = "INSERT INTO utilisateurs (email, mot_de_passe) VALUES (:email, :mdp)";
-            $stmt = $conn->prepare($sql);
-            $stmt->execute([
-                'email' => $email,
-                'mdp' => $hashed_password
-            ]);
-
-            $message_succes = "<div style='background-color: #d4edda; color: #155724; padding: 15px; border-radius: 8px; margin-bottom: 20px; border: 1px solid #c3e6cb;'>
-                ✅ Compte créé avec succès dans la base de données ! Vous pouvez vous connecter.
+        if ($password !== $confirm_password) {
+            $message_succes = "<div style='background-color: #f8d7da; color: #721c24; padding: 15px; border-radius: 8px; margin-bottom: 20px; border: 1px solid #f5c6cb;'>
+                ❌ Les mots de passe ne correspondent pas.
             </div>";
-        } catch(PDOException $e) {
-            $message_succes = "<div style='background-color: #f8d7da; color: #721c24; padding: 15px; border-radius: 8px; margin-bottom: 20px;'>
-                ❌ Erreur : Cet email est peut-être déjà utilisé.
-            </div>";
+        } else {
+            // Sécurité : On hache le mot de passe avant de l'enregistrer
+            $hashed_password = password_hash($password, PASSWORD_DEFAULT);
+
+            try {
+                // Requête préparée pour éviter les failles SQL
+                $sql = "INSERT INTO utilisateurs (email, mot_de_passe) VALUES (:email, :mdp)";
+                $stmt = $conn->prepare($sql);
+                $stmt->execute([
+                    'email' => $email,
+                    'mdp' => $hashed_password
+                ]);
+
+                $message_succes = "<div style='background-color: #d4edda; color: #155724; padding: 15px; border-radius: 8px; margin-bottom: 20px; border: 1px solid #c3e6cb;'>
+                    ✅ Compte créé avec succès ! Vous pouvez vous connecter.
+                </div>";
+            } catch(PDOException $e) {
+                $message_succes = "<div style='background-color: #f8d7da; color: #721c24; padding: 15px; border-radius: 8px; margin-bottom: 20px; border: 1px solid #f5c6cb;'>
+                    ❌ Erreur : Cet email est peut-être déjà utilisé.
+                </div>";
+            }
         }
     }
 }
@@ -70,6 +77,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             <div>
                 <label style="font-weight: bold; color: #333;">Mot de passe :</label>
                 <input type="password" name="password" required style="width: 100%; padding: 12px; margin-top: 5px; border: 1px solid #ccc; border-radius: 8px; font-size: 1rem; box-sizing: border-box;">
+            </div>
+
+            <div>
+                <label style="font-weight: bold; color: #333;">Confirmer le mot de passe :</label>
+                <input type="password" name="confirm_password" required style="width: 100%; padding: 12px; margin-top: 5px; border: 1px solid #ccc; border-radius: 8px; font-size: 1rem; box-sizing: border-box;">
             </div>
 
             <button type="submit" style="padding: 15px; background: #004d99; color: white; border: none; border-radius: 8px; font-weight: bold; font-size: 1.1rem; cursor: pointer; margin-top: 10px; transition: background 0.3s;">
