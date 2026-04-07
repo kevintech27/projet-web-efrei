@@ -98,25 +98,39 @@ require_once('includes/header.php');
 
         <div class="team-grid-apropos">
             <div class="member-card">
-                <h3 style="color: #4da6ff;">Kevin</h3>
-                <p style="font-weight: bold; font-size: 0.8rem; text-transform: uppercase;">Lead Developer</p>
-                <p style="opacity: 0.8; font-size: 0.95rem;">Architecture PHP, Base de données MySQL et intégration 3D
-                    Spline.</p>
+                <h3 style="color: #4da6ff; font-size: 1.5rem; margin-bottom: 5px;">Kevin</h3>
+                <p style="font-weight: bold; font-size: 0.8rem; text-transform: uppercase; color: #ccc;">Architecte
+                    Solution & Lead Full-Stack</p>
+                <p style="opacity: 0.8; font-size: 0.95rem; margin-top:15px;">
+                    Conception de l’infrastructure technique globale, déploiement de l'écosystème PHP/MySQL et pilotage
+                    de l’innovation visuelle 3D.
+                </p>
             </div>
+
             <div class="member-card">
-                <h3 style="color: #4da6ff;">Amir</h3>
-                <p style="font-weight: bold; font-size: 0.8rem; text-transform: uppercase;">Dev Front-End</p>
-                <p style="opacity: 0.8; font-size: 0.95rem;">Structure HTML et conception des pages de formation.</p>
+                <h3 style="color: #4da6ff; font-size: 1.5rem; margin-bottom: 5px;">Amir</h3>
+                <p style="font-weight: bold; font-size: 0.8rem; text-transform: uppercase; color: #ccc;">Spécialiste UI
+                    & Contenu</p>
+                <p style="opacity: 0.8; font-size: 0.95rem; margin-top:15px;">
+                    Structuration sémantique et mise en forme pédagogique des sections "Cours & Formations".
+                </p>
             </div>
+
             <div class="member-card">
-                <h3 style="color: #4da6ff;">Nati</h3>
-                <p style="font-weight: bold; font-size: 0.8rem; text-transform: uppercase;">Intégrateur</p>
-                <p style="opacity: 0.8; font-size: 0.95rem;">Mise en page dynamique et interactivité utilisateur.</p>
+                <h3 style="color: #4da6ff; font-size: 1.5rem; margin-bottom: 5px;">Nati</h3>
+                <p style="font-weight: bold; font-size: 0.8rem; text-transform: uppercase; color: #ccc;">Intégrateur
+                    Front-End</p>
+                <p style="opacity: 0.8; font-size: 0.95rem; margin-top:15px;">
+                    Implémentation des composants interactifs et optimisation de l'affichage de la section Enseignante.
+                </p>
             </div>
+
             <div class="member-card">
-                <h3 style="color: #4da6ff;">Alexandre</h3>
-                <p style="font-weight: bold; font-size: 0.8rem; text-transform: uppercase;">Dev Backend</p>
-                <p style="opacity: 0.8; font-size: 0.95rem;">Logique serveur et gestion des évènements du département.
+                <h3 style="color: #4da6ff; font-size: 1.5rem; margin-bottom: 5px;">Alexandre</h3>
+                <p style="font-weight: bold; font-size: 0.8rem; text-transform: uppercase; color: #ccc;">Développeur
+                    Module</p>
+                <p style="opacity: 0.8; font-size: 0.95rem; margin-top:15px;">
+                    Développement du module événementiel et gestion des flux d'actualités du département.
                 </p>
             </div>
         </div>
