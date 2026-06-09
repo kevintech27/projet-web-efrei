@@ -8,7 +8,7 @@ body::before { content: ""; position: fixed; inset: 0; background: rgba(0, 0, 0,
 
 /* --- NAVBAR (HEADER) INTELLIGENTE --- */
 .navbar { display: flex; align-items: center; justify-content: space-between; padding: 20px 50px; background: rgba(0, 0, 0, 0.25); backdrop-filter: blur(6px); position: fixed; top: 0; left: 0; width: 100%; z-index: 1000; transition: transform 0.4s ease, background-color 0.4s ease, box-shadow 0.4s ease; }
-.navbar.scrolled { background-color: #004d99 !important; box-shadow: 0 4px 15px rgba(0,0,0,0.5); }
+.navbar.scrolled { background-color: #004d99; box-shadow: 0 4px 15px rgba(0,0,0,0.5); }
 .navbar-hidden { transform: translateY(-100%); }
 .logo-img { width: 170px; height: auto; }
 .menu { display: flex; gap: 40px; list-style: none; margin: 0; padding: 0;}
@@ -58,7 +58,7 @@ body::before { content: ""; position: fixed; inset: 0; background: rgba(0, 0, 0,
 .formations-container { display: flex; flex-direction: column; gap: 25px; margin-top: 40px; }
 .formation-block { background: rgba(0, 0, 0, 0.55); border-radius: 15px; backdrop-filter: blur(10px); box-shadow: 0 0 20px rgba(0,0,0,0.5); overflow: hidden; transition: 0.3s; cursor: pointer; }
 .highlight { border: 2px solid #4da6ff; box-shadow: 0 0 25px rgba(77,166,255,0.6); }
-.formation-header { padding: 20px; font-size: 26px; font-weight: 700; color: #4da6ff !important; background: rgba(0,0,0,0.65); text-shadow: 0 0 6px black; position: relative; padding-right: 40px; }
+.formation-header { padding: 20px; font-size: 26px; font-weight: 700; color: #4da6ff; background: rgba(0,0,0,0.65); text-shadow: 0 0 6px black; position: relative; padding-right: 40px; }
 .formation-header::after { content: "+"; position: absolute; right: 20px; top: 50%; transform: translateY(-50%); font-size: 26px; font-weight: 700; color: #4da6ff; transition: 0.3s ease; }
 .formation-block.open .formation-header::after { content: "–"; transform: translateY(-50%) rotate(180deg); }
 .formation-content { max-height: 0; overflow: hidden; padding: 0 20px; transition: max-height 0.4s ease, padding 0.3s ease; color: white; }
