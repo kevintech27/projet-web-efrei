@@ -108,8 +108,9 @@ require_once('includes/header.php');
     </section>
   </main>
 </body>
+
   <script>
-    
+
 document.addEventListener("DOMContentLoaded", () => {
 
     const titre = document.querySelector(".titre-evenement");

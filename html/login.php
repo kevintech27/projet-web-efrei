@@ -1,64 +1,78 @@
 <?php
+// 1. DÉBUG ET SESSIONS (TOUJOURS EN PREMIER)
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
+session_start();
+
+// 2. VÉRIFICATION DU FICHIER DB
+$db_path = '../includes/db.php';
+if (!file_exists($db_path)) {
+    die("ERREUR CRITIQUE : Le fichier $db_path est introuvable. Vérifie tes dossiers !");
+}
+require_once($db_path);
+
 $message_connexion = "";
+
+// 3. LOGIQUE DE CONNEXION (UNIQUEMENT EN POST)
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $email = htmlspecialchars(trim($_POST['email']));
-    if (!empty($email)) {
-        $message_connexion = "<div style='background-color: #d4edda; color: #155724; padding: 15px; border-radius: 8px; margin-bottom: 20px; border: 1px solid #c3e6cb;'>
-            ✅ Connexion réussie pour <strong>$email</strong> ! (Simulation)
-        </div>";
+    $password = $_POST['password'];
+
+    if (!empty($email) && !empty($password)) {
+        try {
+            $stmt = $conn->prepare("SELECT * FROM utilisateurs WHERE email = ?");
+            $stmt->execute([$email]);
+            $user = $stmt->fetch();
+
+            if ($user && password_verify($password, $user['mot_de_passe'])) {
+                $_SESSION['user_email'] = $user['email'];
+                // On redirige
+                header("Location: espace_eleve.php");
+                exit();
+            } else {
+                $message_connexion = "<div style='background-color: #f8d7da; color: #721c24; padding: 15px; border-radius: 8px; margin-bottom: 20px;'>❌ Email ou mot de passe incorrect.</div>";
+            }
+        } catch (PDOException $e) {
+            $message_connexion = "<div style='color:red;'>Erreur Base de données : " . $e->getMessage() . "</div>";
+        }
     }
 }
 ?>
+
 <!DOCTYPE html>
 <html lang="fr">
+
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Connexion - EFREI</title>
     <link rel="stylesheet" href="../css/style.css">
 </head>
-<body style="margin: 0; font-family: 'Roboto', Arial, sans-serif;">
 
-<nav class="navbar" style="background-color: #004d99; box-shadow: 0 4px 15px rgba(0,0,0,0.5); position: fixed; top: 0; left: 0; width: 100%; z-index: 1000; display: flex; align-items: center; justify-content: space-between; padding: 20px 50px; box-sizing: border-box;">
-    <img src="../image/Logo_Efrei_2022.svg.png" alt="Logo Efrei" style="width: 170px; height: auto;">
-    <ul class="menu" style="display: flex; gap: 40px; list-style: none; margin: 0; padding: 0;">
-        <li><a href="../index.php" style="color: white; text-decoration: none; font-size: 22px; font-weight: 600;">Accueil</a></li>
-        <li><a href="../cours.php" style="color: white; text-decoration: none; font-size: 22px; font-weight: 600;">Cours & Formation</a></li>
-        <li><a href="../equipe.php" style="color: white; text-decoration: none; font-size: 22px; font-weight: 600;">Équipe enseignante</a></li>
-        <li><a href="../evenement.php" style="color: white; text-decoration: none; font-size: 22px; font-weight: 600;">Évènement</a></li>
-        <li><a href="../contact.php" style="color: white; text-decoration: none; font-size: 22px; font-weight: 600;">Contact</a></li>
-    </ul>
-</nav>
+<body
+    style="background: #1a1a1a; color: white; font-family: sans-serif; display: flex; justify-content: center; align-items: center; height: 100vh; margin: 0;">
 
-<main style="padding-top: 150px; min-height: 100vh; background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.8)), url('../image/campus-8421-Copie.jpg') center/cover fixed; display: flex; justify-content: center; align-items: center; padding-bottom: 80px; box-sizing: border-box;">
-    
-    <div style="background: white; padding: 40px; border-radius: 15px; box-shadow: 0 15px 40px rgba(0,0,0,0.4); max-width: 400px; width: 90%; text-align: center;">
-        <h1 style="color: #004d99; margin-bottom: 25px; font-size: 2.5rem;">Connexion</h1>
-        
-        <?php if (!empty($message_connexion)) echo $message_connexion; ?>
-        
-        <form action="login.php" method="POST" style="display: flex; flex-direction: column; gap: 15px; text-align: left;">
-            <div>
-                <label style="font-weight: bold; color: #333;">Email :</label>
-                <input type="email" name="email" required style="width: 100%; padding: 12px; margin-top: 5px; border: 1px solid #ccc; border-radius: 8px; font-size: 1rem; box-sizing: border-box;">
-            </div>
+    <div style="background: white; color: #333; padding: 40px; border-radius: 15px; width: 350px; text-align: center;">
+        <h1 style="color: #004d99;">Connexion</h1>
 
-            <div>
-                <label style="font-weight: bold; color: #333;">Mot de passe :</label>
-                <input type="password" name="password" required style="width: 100%; padding: 12px; margin-top: 5px; border: 1px solid #ccc; border-radius: 8px; font-size: 1rem; box-sizing: border-box;">
-            </div>
+        <?php echo $message_connexion; ?>
 
-            <button type="submit" style="padding: 15px; background: #004d99; color: white; border: none; border-radius: 8px; font-weight: bold; font-size: 1.1rem; cursor: pointer; margin-top: 10px; transition: background 0.3s;">
-                Se connecter
-            </button>
+        <form action="login.php" method="POST" style="display: flex; flex-direction: column; gap: 15px;">
+            <input type="email" name="email" placeholder="Email" required
+                style="padding: 10px; border-radius: 5px; border: 1px solid #ccc;">
+            <input type="password" name="password" placeholder="Mot de passe" required
+                style="padding: 10px; border-radius: 5px; border: 1px solid #ccc;">
+            <button type="submit"
+                style="padding: 12px; background: #004d99; color: white; border: none; border-radius: 5px; cursor: pointer; font-weight: bold;">Se
+                connecter</button>
         </form>
 
-        <p style="margin-top: 25px; color: #555; font-size: 1rem;">Pas encore de compte ? <br>
-            <a href="register.php" style="color: #4da6ff; font-weight: bold; text-decoration: none;">Créer un compte</a>
+        <p style="margin-top: 20px; font-size: 0.9rem;">
+            Pas de compte ? <a href="register.php" style="color: #4da6ff;">Créer un compte</a>
         </p>
+        <p><a href="../index.php" style="text-decoration: none; color: #666;">← Retour à l'accueil</a></p>
     </div>
 
-</main>
-
 </body>
+
 </html>
